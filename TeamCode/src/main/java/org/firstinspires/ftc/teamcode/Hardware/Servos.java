@@ -10,6 +10,7 @@ public class Servos {
     private Servo kick;             // Hub 3 Servo Slot 2
     private Servo latch;
     private CRServo buffer;
+    private Servo drop;
 
     private final double FLAP_UP = 0.45;
     private final double FLAP_DOWN = 0;
