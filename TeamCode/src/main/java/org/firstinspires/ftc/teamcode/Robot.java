@@ -96,14 +96,14 @@ public class Robot {
         DcMotor backLeft = hardwareMap.dcMotor.get("backLeft");
         DcMotor frontRight = hardwareMap.dcMotor.get("frontRight");
         DcMotor backRight = hardwareMap.dcMotor.get("backRight");
-        DcMotor flyWheelMotor = hardwareMap.dcMotor.get("Flywheel");
-        DcMotor wheelStickMotor = hardwareMap.dcMotor.get("WheelStick");
-        DcMotor wobbleGoalMotor = hardwareMap.dcMotor.get("WobbleGoal");
-        Servo flap = hardwareMap.servo.get("flap");
-        Servo kick = hardwareMap.servo.get("kick");
-//        Servo release = hardwareMap.servo.get("release");
-        Servo latch = hardwareMap.servo.get("latch");
-        CRServo buffer = hardwareMap.crservo.get("buffer");
+//        DcMotor flyWheelMotor = hardwareMap.dcMotor.get("Flywheel");
+//        DcMotor wheelStickMotor = hardwareMap.dcMotor.get("WheelStick");
+//        DcMotor wobbleGoalMotor = hardwareMap.dcMotor.get("WobbleGoal");
+//        Servo flap = hardwareMap.servo.get("flap");
+//        Servo kick = hardwareMap.servo.get("kick");
+////        Servo release = hardwareMap.servo.get("release");
+//        Servo latch = hardwareMap.servo.get("latch");
+//        CRServo buffer = hardwareMap.crservo.get("buffer");
 //        ColorSensor color = hardwareMap.colorSensor.get("colorSensor");
 
         gyro = hardwareMap.get(BNO055IMU.class, "imu");
@@ -128,12 +128,12 @@ public class Robot {
         imu = new IMU(gyro);
 
 
-        s = new Servos(flap, kick, latch, buffer);
+//        s = new Servos(flap, kick, latch, buffer);
         driveTrain = new DriveTrainVel(frontLeft, frontRight, backLeft, backRight);
         robotMotors = new RobotMotors(frontLeft, frontRight, backLeft, backRight);
-        wheelStick = new WheelStick(wheelStickMotor);
-        flywheel = new Flywheel(flyWheelMotor);
-        wobbleGoal = new WobbleGoal(wobbleGoalMotor);
+//        wheelStick = new WheelStick(wheelStickMotor);
+//        flywheel = new Flywheel(flyWheelMotor);
+//        wobbleGoal = new WobbleGoal(wobbleGoalMotor);
     }
 
     public void waitForTick(long periodMs) throws InterruptedException {

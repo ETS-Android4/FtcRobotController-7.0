@@ -84,123 +84,123 @@ public class GluonsTeleOp extends LinearOpMode {
 //            // Gamepad 1 - Driver + Intake + Foundation Arms GAMER MOMENTS 2020
 
 
-            if (slowModeButtonCD == 0 && gamepad1.back) {
-                if (maxPower == 1) {
-                    maxPower = .5;
-                } else {
-                    maxPower = 1;
-                }
-                slowModeButtonCD = 12;
-            }
-
+//            if (slowModeButtonCD == 0 && gamepad1.back) {
+//                if (maxPower == 1) {
+//                    maxPower = .5;
+//                } else {
+//                    maxPower = 1;
+//                }
+//                slowModeButtonCD = 12;
+//            }
 //
-//            final double x = Math.pow(gamepad1.left_stick_x*-1, 3.0);
-//            final double y = Math.pow(gamepad1.left_stick_y *-1, 3.0);
-//            final double rotation = Math.pow(gamepad1.right_stick_x*1, 3.0)/1.5; //changed from negative to 1
-//            final double direction = Math.atan2(x, y) + robot.imu.getHeading();
-//            final double speed = Math.min(1.0, Math.sqrt(x * x + y * y));
+////
+////            final double x = Math.pow(gamepad1.left_stick_x*-1, 3.0);
+////            final double y = Math.pow(gamepad1.left_stick_y *-1, 3.0);
+////            final double rotation = Math.pow(gamepad1.right_stick_x*1, 3.0)/1.5; //changed from negative to 1
+////            final double direction = Math.atan2(x, y) + robot.imu.getHeading();
+////            final double speed = Math.min(1.0, Math.sqrt(x * x + y * y));
+////
+////            final double frontLeft = 1 * speed * Math.sin(direction + Math.PI / 4.0) + rotation;
+////            final double frontRight = 1 * speed * Math.cos(direction + Math.PI / 4.0) - rotation;
+////            final double backLeft = 1 * speed * Math.cos(direction + Math.PI / 4.0) + rotation;
+////            final double backRight = 1 * speed * Math.sin(direction + Math.PI / 4.0) - rotation;
+////
+////            robot.robotMotors.setMotorPower(frontLeft, frontRight, backLeft, backRight);
 //
-//            final double frontLeft = 1 * speed * Math.sin(direction + Math.PI / 4.0) + rotation;
-//            final double frontRight = 1 * speed * Math.cos(direction + Math.PI / 4.0) - rotation;
-//            final double backLeft = 1 * speed * Math.cos(direction + Math.PI / 4.0) + rotation;
-//            final double backRight = 1 * speed * Math.sin(direction + Math.PI / 4.0) - rotation;
+//            // WheelStick Control
+//            if(gamepad1.right_trigger>0.2) {
 //
-//            robot.robotMotors.setMotorPower(frontLeft, frontRight, backLeft, backRight);
-
-            // WheelStick Control
-            if(gamepad1.right_trigger>0.2) {
-
-                robot.wheelStick.reverseIntake();
-//                robot.s.onBuffer();
-            }
-            else {
-                robot.wheelStick.noIntake();
-//                robot.s.offBuffer();
-            }
-
-            // Intake
-            if(gamepad1.left_trigger>0.2) {
-                robot.wheelStick.intake();
-//                robot.s.onBuffer();
-            }
-            else {
-                robot.wheelStick.noIntake();
-//                robot.s.offBuffer();
-            }
-
-            //WobbleGoal Controls
-            if(gamepad1.dpad_up)
-            {
-                robot.wobbleGoal.raise();
-            }
-            else
-            {
-                robot.wobbleGoal.noRaise();
-            }
-
-            if(gamepad1.dpad_down)
-            {
-                robot.wobbleGoal.lower();
-            }
-
-            //Latch Controls
-            if(gamepad1.a&&latchButtonCD==0)
-            {
-                if(!latched) {
-                    robot.s.latch();
-                    latched=true;
-                }
-                else {
-                    robot.s.unlatch();
-                    latched=false;
-                }
-                latchButtonCD=12;
-            }
-
-
-            // Gamepad 2 - Functions GAMER MOMENTS 2020
-
-            //Flywheel Speed Controls
-            if(gamepad2.x)
-            {
-                Flywheel.maxPower =-1;
-            }
-            if(gamepad2.a)
-            {
-                Flywheel.maxPower=-.8;
-            }
-            if(gamepad2.b)
-            {
-                Flywheel.maxPower=-.9;
-            }
-
-            //FlyWheel Control
-            if(gamepad2.left_trigger>0.2) {
-                robot.flywheel.launch();
-            }
-            else {
-                robot.flywheel.noLaunch();
-            }
-
-            //Flap Control
-            if(flapButtonCD == 0 && gamepad2.y) {
-                if(!flapUp) {
-                    robot.s.upFlap();
-                    flapUp=true;
-                } else {
-                    robot.s.downFlap();
-                    flapUp=false;
-                }
-                flapButtonCD=12;
-            }
-
-            //Kicker Controls
-            if(gamepad2.right_trigger>0.2) {
-                robot.s.kick();
-            }
-            else {
-                robot.s.unkick();
-            }
+//                robot.wheelStick.reverseIntake();
+////                robot.s.onBuffer();
+//            }
+//            else {
+//                robot.wheelStick.noIntake();
+////                robot.s.offBuffer();
+//            }
+//
+//            // Intake
+//            if(gamepad1.left_trigger>0.2) {
+//                robot.wheelStick.intake();
+////                robot.s.onBuffer();
+//            }
+//            else {
+//                robot.wheelStick.noIntake();
+////                robot.s.offBuffer();
+//            }
+//
+//            //WobbleGoal Controls
+//            if(gamepad1.dpad_up)
+//            {
+//                robot.wobbleGoal.raise();
+//            }
+//            else
+//            {
+//                robot.wobbleGoal.noRaise();
+//            }
+//
+//            if(gamepad1.dpad_down)
+//            {
+//                robot.wobbleGoal.lower();
+//            }
+//
+//            //Latch Controls
+//            if(gamepad1.a&&latchButtonCD==0)
+//            {
+//                if(!latched) {
+//                    robot.s.latch();
+//                    latched=true;
+//                }
+//                else {
+//                    robot.s.unlatch();
+//                    latched=false;
+//                }
+//                latchButtonCD=12;
+//            }
+//
+//
+//            // Gamepad 2 - Functions GAMER MOMENTS 2020
+//
+//            //Flywheel Speed Controls
+//            if(gamepad2.x)
+//            {
+//                Flywheel.maxPower =-1;
+//            }
+//            if(gamepad2.a)
+//            {
+//                Flywheel.maxPower=-.8;
+//            }
+//            if(gamepad2.b)
+//            {
+//                Flywheel.maxPower=-.9;
+//            }
+//
+//            //FlyWheel Control
+//            if(gamepad2.left_trigger>0.2) {
+//                robot.flywheel.launch();
+//            }
+//            else {
+//                robot.flywheel.noLaunch();
+//            }
+//
+//            //Flap Control
+//            if(flapButtonCD == 0 && gamepad2.y) {
+//                if(!flapUp) {
+//                    robot.s.upFlap();
+//                    flapUp=true;
+//                } else {
+//                    robot.s.downFlap();
+//                    flapUp=false;
+//                }
+//                flapButtonCD=12;
+//            }
+//
+//            //Kicker Controls
+//            if(gamepad2.right_trigger>0.2) {
+//                robot.s.kick();
+//            }
+//            else {
+//                robot.s.unkick();
+//            }
 
 //            //Release Wheelstick Controls
 //            if(gamepad2.dpad_left) {
