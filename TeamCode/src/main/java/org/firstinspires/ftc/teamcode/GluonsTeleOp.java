@@ -49,6 +49,9 @@ public class GluonsTeleOp extends LinearOpMode {
         boolean released = false;
         int latchButtonCD = 0;
         boolean latched = false;
+        int dropButtonCD = 0;
+        boolean dropped = false;
+
 
         robot.robotMotors.turnOffEncoders();
         waitForStart();
@@ -84,14 +87,14 @@ public class GluonsTeleOp extends LinearOpMode {
 //            // Gamepad 1 - Driver + Intake + Foundation Arms GAMER MOMENTS 2020
 
 
-//            if (slowModeButtonCD == 0 && gamepad1.back) {
-//                if (maxPower == 1) {
-//                    maxPower = .5;
-//                } else {
-//                    maxPower = 1;
-//                }
-//                slowModeButtonCD = 12;
-//            }
+            if (slowModeButtonCD == 0 && gamepad1.back) {
+                if (maxPower == 1) {
+                    maxPower = .5;
+                } else {
+                    maxPower = 1;
+                }
+                slowModeButtonCD = 12;
+            }
 //
 ////
 ////            final double x = Math.pow(gamepad1.left_stick_x*-1, 3.0);
@@ -107,25 +110,21 @@ public class GluonsTeleOp extends LinearOpMode {
 ////
 ////            robot.robotMotors.setMotorPower(frontLeft, frontRight, backLeft, backRight);
 //
-//            // WheelStick Control
+            // Reverse Intake
 //            if(gamepad1.right_trigger>0.2) {
 //
-//                robot.wheelStick.reverseIntake();
-////                robot.s.onBuffer();
+//                robot.intake.reverseIntake();
 //            }
 //            else {
-//                robot.wheelStick.noIntake();
-////                robot.s.offBuffer();
+//                robot.intake.noIntake();
 //            }
 //
-//            // Intake
+//            // Forward Intake
 //            if(gamepad1.left_trigger>0.2) {
-//                robot.wheelStick.intake();
-////                robot.s.onBuffer();
+//                robot.intake.intake();
 //            }
 //            else {
-//                robot.wheelStick.noIntake();
-////                robot.s.offBuffer();
+//                robot.intake.noIntake();
 //            }
 //
 //            //WobbleGoal Controls
@@ -143,43 +142,48 @@ public class GluonsTeleOp extends LinearOpMode {
 //                robot.wobbleGoal.lower();
 //            }
 //
-//            //Latch Controls
-//            if(gamepad1.a&&latchButtonCD==0)
+            //Drop Controls
+//            if(gamepad1.a&&dropButtonCD==0)
 //            {
-//                if(!latched) {
-//                    robot.s.latch();
-//                    latched=true;
+//                if(!dropped) {
+//                    robot.s.dDown();
+//                    dropped=true;
 //                }
 //                else {
-//                    robot.s.unlatch();
-//                    latched=false;
+//                    robot.s.dUp();
+//                    dropped=false;
 //                }
-//                latchButtonCD=12;
+//                dropButtonCD=12;
 //            }
 //
 //
 //            // Gamepad 2 - Functions GAMER MOMENTS 2020
 //
-//            //Flywheel Speed Controls
-//            if(gamepad2.x)
-//            {
-//                Flywheel.maxPower =-1;
-//            }
+
+            //Lift Control
 //            if(gamepad2.a)
 //            {
-//                Flywheel.maxPower=-.8;
+//                robot.lift.liftLowerLevel();
+//            }
+//            if(gamepad2.x)
+//            {
+//                robot.lift.liftMidLevel();
+//            }
+//            if(gamepad2.y)
+//            {
+//                robot.lift.liftUpperLevel();
 //            }
 //            if(gamepad2.b)
 //            {
-//                Flywheel.maxPower=-.9;
+//                robot.lift.backToBase();
 //            }
 //
-//            //FlyWheel Control
+//            //Carousel Control
 //            if(gamepad2.left_trigger>0.2) {
-//                robot.flywheel.launch();
+//                robot.carouselTurn.startTurn();
 //            }
 //            else {
-//                robot.flywheel.noLaunch();
+//                robot.carouselTurn.stopTurn();
 //            }
 //
 //            //Flap Control

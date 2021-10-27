@@ -53,6 +53,11 @@ import org.firstinspires.ftc.teamcode.Hardware.Sensors;
 import org.firstinspires.ftc.teamcode.Hardware.Servos;
 import org.firstinspires.ftc.teamcode.Hardware.WheelStick;
 import org.firstinspires.ftc.teamcode.Hardware.WobbleGoal;
+import org.firstinspires.ftc.teamcode.Hardware.CarouselTurn;
+import org.firstinspires.ftc.teamcode.Hardware.Intake;
+import org.firstinspires.ftc.teamcode.Hardware.Lift;
+
+
 
 
 public class Robot {
@@ -65,6 +70,9 @@ public class Robot {
     public WheelStick wheelStick;
     public Flywheel flywheel;
     public WobbleGoal wobbleGoal;
+    public CarouselTurn carouselTurn;
+    public Lift lift;
+    public Intake intake;
 
     private VuforiaLocalizer vuforia;
     private static final String VUFORIA_KEY = "AfmBbcz/////AAAAGbLGg++zzk4MiOrcPTc3t9xQj3QHfISJprebOgt5JJ4+83xtFO+ApGlI3GVY/aMgCpoGEIzaJse9sXiYDiLYpJQlGDX765tWJUrqM+pzqLxVXjWA1J6c968/YqYq74Vq5emNxGHj5SF3HP3m43Iq/YYgkSdMv4BR+RThPPnIIzrbAjEAHHtMgH7vVh036+bcw9UqBfSdD/IBqrKpJLERn5+Qi/4Q4EoReCC0CTDfZ+LcY0rUur0QZRkMpxx/9s4eCgIU+qfOcSlBvjoX7QAQ2MImUME1y5yJiyaWueamnhRBOwERGBuDKyGp4eBWp4i3esJcplrWYovjzPg9fL7Thy8v9KnrHy22PUFAYY+1vjKp";
@@ -96,15 +104,11 @@ public class Robot {
         DcMotor backLeft = hardwareMap.dcMotor.get("backLeft");
         DcMotor frontRight = hardwareMap.dcMotor.get("frontRight");
         DcMotor backRight = hardwareMap.dcMotor.get("backRight");
-//        DcMotor flyWheelMotor = hardwareMap.dcMotor.get("Flywheel");
-//        DcMotor wheelStickMotor = hardwareMap.dcMotor.get("WheelStick");
-//        DcMotor wobbleGoalMotor = hardwareMap.dcMotor.get("WobbleGoal");
-//        Servo flap = hardwareMap.servo.get("flap");
-//        Servo kick = hardwareMap.servo.get("kick");
-////        Servo release = hardwareMap.servo.get("release");
-//        Servo latch = hardwareMap.servo.get("latch");
-//        CRServo buffer = hardwareMap.crservo.get("buffer");
-//        ColorSensor color = hardwareMap.colorSensor.get("colorSensor");
+//        DcMotor turnMotor = hardwareMap.dcMotor.get("turnMotor");
+//        DcMotor inMotor = hardwareMap.dcMotor.get("inMotor");
+//        DcMotor liftMotor = hardwareMap.dcMotor.get("liftMotor");
+
+//        Servo drop = hardwareMap.servo.get("drop");
 
         gyro = hardwareMap.get(BNO055IMU.class, "imu");
         angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);
@@ -129,11 +133,12 @@ public class Robot {
 
 
 //        s = new Servos(flap, kick, latch, buffer);
+//        s = new Servos(drop);
         driveTrain = new DriveTrainVel(frontLeft, frontRight, backLeft, backRight);
         robotMotors = new RobotMotors(frontLeft, frontRight, backLeft, backRight);
-//        wheelStick = new WheelStick(wheelStickMotor);
-//        flywheel = new Flywheel(flyWheelMotor);
-//        wobbleGoal = new WobbleGoal(wobbleGoalMotor);
+//        carouselTurn = new CarouselTurn(turnMotor);
+//        intake = new Intake(inMotor);
+//        lift = new Lift(liftMotor);
     }
 
     public void waitForTick(long periodMs) throws InterruptedException {
