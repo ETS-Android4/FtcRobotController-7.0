@@ -40,11 +40,13 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import org.firstinspires.ftc.teamcode.Autonomous.DriveTrainVel;
 import org.firstinspires.ftc.teamcode.Hardware.Flywheel;
 import org.firstinspires.ftc.teamcode.Hardware.IMU;
@@ -74,8 +76,16 @@ public class Robot {
     public Lift lift;
     public Intake intake;
 
-    private VuforiaLocalizer vuforia;
+    public VuforiaLocalizer vuforia;
     private static final String VUFORIA_KEY = "AfmBbcz/////AAAAGbLGg++zzk4MiOrcPTc3t9xQj3QHfISJprebOgt5JJ4+83xtFO+ApGlI3GVY/aMgCpoGEIzaJse9sXiYDiLYpJQlGDX765tWJUrqM+pzqLxVXjWA1J6c968/YqYq74Vq5emNxGHj5SF3HP3m43Iq/YYgkSdMv4BR+RThPPnIIzrbAjEAHHtMgH7vVh036+bcw9UqBfSdD/IBqrKpJLERn5+Qi/4Q4EoReCC0CTDfZ+LcY0rUur0QZRkMpxx/9s4eCgIU+qfOcSlBvjoX7QAQ2MImUME1y5yJiyaWueamnhRBOwERGBuDKyGp4eBWp4i3esJcplrWYovjzPg9fL7Thy8v9KnrHy22PUFAYY+1vjKp";
+    public TFObjectDetector tfod;
+    private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
+    private static final String[] LABELS = {
+            "Ball",
+            "Cube",
+            "Duck",
+            "Marker"
+    };
     BNO055IMU gyro;
     public Orientation angles;
 
@@ -116,11 +126,22 @@ public class Robot {
 // MUST FIX        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
 // MUST FIX        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
 
-//        parameters.vuforiaLicenseKey = VUFORIA_KEY;
+//      Initialize Vuforia engine
+        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
+        parameters.vuforiaLicenseKey = VUFORIA_KEY;
+        this.vuforia = ClassFactory.getInstance().createVuforia(parameters);
 //        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
-//
-//        //  Instantiate the Vuforia engine
-//        vuforia = ClassFactory.getInstance().createVuforia(parameters);
+
+        //Initialize TensorFlow object detection engine
+        int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
+                "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+        TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
+        tfodParameters.minResultConfidence = 0.8f;
+        tfodParameters.isModelTensorFlow2 = true;
+        tfodParameters.inputSize = 320;
+        tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
+        tfod.loadModelFromAsset(TFOD_MODEL_ASSET, LABELS);
+
 
         BNO055IMU.Parameters imuParameters = new BNO055IMU.Parameters();
         imuParameters.angleUnit = BNO055IMU.AngleUnit.RADIANS;

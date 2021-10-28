@@ -32,6 +32,13 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
+//Computer vision imports
+import java.util.List;
+import org.firstinspires.ftc.robotcore.external.ClassFactory;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
+import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 
 import org.firstinspires.ftc.teamcode.Hardware.Flywheel;
 
@@ -52,8 +59,14 @@ public class GluonsTeleOp extends LinearOpMode {
         int dropButtonCD = 0;
         boolean dropped = false;
 
-
         robot.robotMotors.turnOffEncoders();
+
+        //Activates TFOD upon initialization
+        if (robot.tfod != null) {
+            robot.tfod.activate();
+            robot.tfod.setZoom(2.5, 16.0/9.0);
+        }
+
         waitForStart();
 
         while (opModeIsActive()) {
@@ -225,6 +238,26 @@ public class GluonsTeleOp extends LinearOpMode {
 //                }
 //                latchButtonCD=12;
 //            }
+
+            //Computer vision
+            if (robot.tfod != null) {
+                // getUpdatedRecognitions() will return null if no new information is available since
+                // the last time that call was made.
+                List<Recognition> updatedRecognitions = robot.tfod.getUpdatedRecognitions();
+                if (updatedRecognitions != null) {
+                    telemetry.addData("# Object Detected", updatedRecognitions.size());
+                    // step through the list of recognitions and display boundary info.
+                    int i = 0;
+                    for (Recognition recognition : updatedRecognitions) {
+                        telemetry.addData(String.format("label (%d)", i), recognition.getLabel());
+                        telemetry.addData(String.format("  left,top (%d)", i), "%.03f , %.03f",
+                                recognition.getLeft(), recognition.getTop());
+                        telemetry.addData(String.format("  right,bottom (%d)", i), "%.03f , %.03f",
+                                recognition.getRight(), recognition.getBottom());
+                        i++;
+                    }
+                }
+            }
 
             // TELEMETRY STATEMENTS
 

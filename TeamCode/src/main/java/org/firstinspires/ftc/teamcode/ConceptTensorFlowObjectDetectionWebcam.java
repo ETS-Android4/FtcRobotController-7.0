@@ -163,8 +163,6 @@ public class ConceptTensorFlowObjectDetectionWebcam extends LinearOpMode {
 //        parameters.vuforiaLicenseKey = VUFORIA_KEY;
 //        parameters.cameraName = hardwareMap.get(WebcamName.class, "Webcam 1");
 //
-//        telemetry.addData(">", "try instantiate");
-//        telemetry.update();
 //        //  Instantiate the Vuforia engine
 //        vuforia = ClassFactory.getInstance().createVuforia(parameters);
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
