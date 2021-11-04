@@ -127,6 +127,7 @@ public class Robot {
 // MUST FIX        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
 
 //      Initialize Vuforia engine
+
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         this.vuforia = ClassFactory.getInstance().createVuforia(parameters);

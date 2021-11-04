@@ -46,6 +46,16 @@ import org.firstinspires.ftc.teamcode.Hardware.Flywheel;
 
 public class GluonsTeleOp extends LinearOpMode {
     Robot robot = new Robot();
+
+    private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
+    private static final String[] LABELS = {
+            "Ball",
+            "Cube",
+            "Duck",
+            "Marker"
+    };
+
+
     public void runOpMode() throws InterruptedException {
 
         robot.init(hardwareMap);
