@@ -72,10 +72,10 @@ public class GluonsTeleOp extends LinearOpMode {
         robot.robotMotors.turnOffEncoders();
 
         //Activates TFOD upon initialization
-        if (robot.tfod != null) {
+       // if (robot.tfod != null) {
             robot.tfod.activate();
-            robot.tfod.setZoom(2.5, 16.0/9.0);
-        }
+            robot.tfod.setZoom(1.5, 16.0/9.0);
+       // }
 
         waitForStart();
 
@@ -87,7 +87,7 @@ public class GluonsTeleOp extends LinearOpMode {
             // DRIVE ====================================================
             //
             double maxPower = 1;
-            double forward = Math.abs(gamepad1.left_stick_y) > 0.2 ? -gamepad1.left_stick_y : 0;
+            double forward = (Math.abs(gamepad1.left_stick_y) > 0.2 ? -gamepad1.left_stick_y : 0) * -1;
             double clockwise = Math.abs(gamepad1.right_stick_x) > 0.2 ? -gamepad1.right_stick_x : 0;
             double right = Math.abs(gamepad1.left_stick_x) > 0.2 ? gamepad1.left_stick_x : 0;
             //Math for drive relative to theta

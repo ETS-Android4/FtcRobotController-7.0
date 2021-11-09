@@ -72,9 +72,9 @@ public class Robot {
     public WheelStick wheelStick;
     public Flywheel flywheel;
     public WobbleGoal wobbleGoal;
-    public CarouselTurn carouselTurn;
-    public Lift lift;
-    public Intake intake;
+//    public CarouselTurn carouselTurn;
+//    public Lift lift;
+//    public Intake intake;
 
     public VuforiaLocalizer vuforia;
     private static final String VUFORIA_KEY = "AfmBbcz/////AAAAGbLGg++zzk4MiOrcPTc3t9xQj3QHfISJprebOgt5JJ4+83xtFO+ApGlI3GVY/aMgCpoGEIzaJse9sXiYDiLYpJQlGDX765tWJUrqM+pzqLxVXjWA1J6c968/YqYq74Vq5emNxGHj5SF3HP3m43Iq/YYgkSdMv4BR+RThPPnIIzrbAjEAHHtMgH7vVh036+bcw9UqBfSdD/IBqrKpJLERn5+Qi/4Q4EoReCC0CTDfZ+LcY0rUur0QZRkMpxx/9s4eCgIU+qfOcSlBvjoX7QAQ2MImUME1y5yJiyaWueamnhRBOwERGBuDKyGp4eBWp4i3esJcplrWYovjzPg9fL7Thy8v9KnrHy22PUFAYY+1vjKp";
@@ -114,7 +114,7 @@ public class Robot {
         DcMotor backLeft = hardwareMap.dcMotor.get("backLeft");
         DcMotor frontRight = hardwareMap.dcMotor.get("frontRight");
         DcMotor backRight = hardwareMap.dcMotor.get("backRight");
-//        DcMotor turnMotor = hardwareMap.dcMotor.get("turnMotor");
+        DcMotor turnMotor = hardwareMap.dcMotor.get("turnMotor");
 //        DcMotor inMotor = hardwareMap.dcMotor.get("inMotor");
 //        DcMotor liftMotor = hardwareMap.dcMotor.get("liftMotor");
 
