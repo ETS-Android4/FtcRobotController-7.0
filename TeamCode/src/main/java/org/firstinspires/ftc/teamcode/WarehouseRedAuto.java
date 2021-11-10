@@ -46,7 +46,7 @@ public class WarehouseRedAuto extends LinearOpMode{
 //        Claw.open();
         robot.robotMotors.moveForward(750, -0.5);
         robot.robotMotors.strafe(2000,'l'); //plan has different value for speed, value is default
-        robot.carouselTurn.runOnce(); //need to make RunOnce method in carousel RedAuto Class
+//        robot.carouselTurn.runOnce(); //need to make RunOnce method in carousel RedAuto Class
         robot.robotMotors.strafe(200,'r');
         robot.robotMotors.turn(90,'r');
         robot.robotMotors.moveForward(900, 0.4);

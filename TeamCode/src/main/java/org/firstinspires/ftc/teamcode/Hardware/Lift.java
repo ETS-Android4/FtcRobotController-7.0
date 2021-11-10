@@ -8,34 +8,28 @@ public class Lift {
     public Lift(DcMotor l) {
         l.setPower(0);
         l.setDirection(DcMotor.Direction.FORWARD);
+        l.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         l.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        l.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        l.setPower(0.8);
+        //145.1 Ticks Per Revolution
 
         liftMotor = l;
     }
 
     public static double maxPower = 1;
 
-    public void startLift()
-    {
-        liftMotor.setPower(maxPower);
-    }
-    public void reverseLift()
-    {
-        liftMotor.setPower(-maxPower);
-    }
-    public void stopLift() { liftMotor.setPower(0); }
-
     public void backToBase()
     {
         liftMotor.setTargetPosition(0);
     }
     public void liftLowerLevel() {
-        liftMotor.setTargetPosition(5); //value is subject to change
+        liftMotor.setTargetPosition((int)145.1/7); //value is subject to change
     }
     public void liftMidLevel() {
-        liftMotor.setTargetPosition(10); //value is subject to change
+        liftMotor.setTargetPosition((int)(145.1*(2/7))); //value is subject to change
     }
     public void liftUpperLevel() {
-        liftMotor.setTargetPosition(15); //value is subject to change
+        liftMotor.setTargetPosition((int)(145.1*(3/7))); //value is subject to change
     }
 }

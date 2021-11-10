@@ -93,8 +93,8 @@ public class GluonsTeleOp extends LinearOpMode {
             //Math for drive relative to theta
             clockwise *= 1;
 
-            double fr = forward + clockwise + right;  //+
-            double br = forward + clockwise - right;  //-
+            double fr = forward + clockwise - right;  //+ JUST CHANGED
+            double br = forward + clockwise + right;  //- JUST CHANGED
             double fl = forward - clockwise - right;  //-
             double bl = forward - clockwise + right;  //+
 
@@ -201,13 +201,13 @@ public class GluonsTeleOp extends LinearOpMode {
 //                robot.lift.backToBase();
 //            }
 //
-//            //Carousel Control
-//            if(gamepad2.left_trigger>0.2) {
-//                robot.carouselTurn.startTurn();
-//            }
-//            else {
-//                robot.carouselTurn.stopTurn();
-//            }
+            //Carousel Control
+            if(gamepad2.left_trigger>0.2) {
+                robot.carouselTurn.startTurn();
+            }
+            else {
+                robot.carouselTurn.stopTurn();
+            }
 //
 //            //Flap Control
 //            if(flapButtonCD == 0 && gamepad2.y) {

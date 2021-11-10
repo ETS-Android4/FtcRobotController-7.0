@@ -72,7 +72,7 @@ public class Robot {
     public WheelStick wheelStick;
     public Flywheel flywheel;
     public WobbleGoal wobbleGoal;
-//    public CarouselTurn carouselTurn;
+    public CarouselTurn carouselTurn;
 //    public Lift lift;
 //    public Intake intake;
 
@@ -158,7 +158,7 @@ public class Robot {
 //        s = new Servos(drop);
         driveTrain = new DriveTrainVel(frontLeft, frontRight, backLeft, backRight);
         robotMotors = new RobotMotors(frontLeft, frontRight, backLeft, backRight);
-//        carouselTurn = new CarouselTurn(turnMotor);
+        carouselTurn = new CarouselTurn(turnMotor);
 //        intake = new Intake(inMotor);
 //        lift = new Lift(liftMotor);
     }
