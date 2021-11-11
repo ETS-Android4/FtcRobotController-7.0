@@ -116,7 +116,7 @@ public class Robot {
         DcMotor backRight = hardwareMap.dcMotor.get("backRight");
         DcMotor turnMotor = hardwareMap.dcMotor.get("turnMotor");
 //        DcMotor inMotor = hardwareMap.dcMotor.get("inMotor");
-//        DcMotor liftMotor = hardwareMap.dcMotor.get("liftMotor");
+        DcMotor liftMotor = hardwareMap.dcMotor.get("liftMotor");
 
 //        Servo drop = hardwareMap.servo.get("drop");
 

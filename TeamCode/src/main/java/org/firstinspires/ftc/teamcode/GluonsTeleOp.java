@@ -87,16 +87,16 @@ public class GluonsTeleOp extends LinearOpMode {
             // DRIVE ====================================================
             //
             double maxPower = 1;
-            double forward = (Math.abs(gamepad1.left_stick_y) > 0.2 ? -gamepad1.left_stick_y : 0) * -1;
+            double forward = (Math.abs(gamepad1.left_stick_y) > 0.2 ? -gamepad1.left_stick_y : 0);
             double clockwise = Math.abs(gamepad1.right_stick_x) > 0.2 ? -gamepad1.right_stick_x : 0;
             double right = Math.abs(gamepad1.left_stick_x) > 0.2 ? gamepad1.left_stick_x : 0;
             //Math for drive relative to theta
             clockwise *= 1;
 
-            double fr = forward + clockwise - right;  //+ JUST CHANGED
-            double br = forward + clockwise + right;  //- JUST CHANGED
-            double fl = forward - clockwise - right;  //-
-            double bl = forward - clockwise + right;  //+
+            double fr = forward + clockwise - right;  //+
+            double br = forward + clockwise + right;  //-
+            double fl = forward - clockwise + right;  //-
+            double bl = forward - clockwise - right;  //+
 
             fl = Range.scale(fl, -1, 1, -maxPower, maxPower);
             fr = Range.scale(fr, -1, 1, -maxPower, maxPower);
@@ -203,12 +203,18 @@ public class GluonsTeleOp extends LinearOpMode {
 //
             //Carousel Control
             if(gamepad2.left_trigger>0.2) {
-                robot.carouselTurn.startTurn();
+                robot.carouselTurn.startBlueTurn();
             }
             else {
                 robot.carouselTurn.stopTurn();
             }
 //
+            if(gamepad2.right_trigger>0.2) {
+                robot.carouselTurn.startRedTurn();
+            }
+            else {
+                robot.carouselTurn.stopTurn();
+            }
 //            //Flap Control
 //            if(flapButtonCD == 0 && gamepad2.y) {
 //                if(!flapUp) {
