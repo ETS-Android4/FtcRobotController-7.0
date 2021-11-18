@@ -18,20 +18,21 @@ public class CarouselTurn {
     }
 
     private final int FULL_ROTATION=1000; //time for the carousel to spin once completely. subject to change.
-    public static double maxPower=0.6;
+    public static double redPower=-0.4;
+    public static double bluePower=0.8;
 
     public void startBlueTurn()
     {
-        turnMotor.setDirection(DcMotorSimple.Direction.FORWARD);
-        turnMotor.setPower(maxPower);
+//        turnMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        turnMotor.setPower(bluePower);
     }
 
     public void stopTurn() { turnMotor.setPower(0); }
 
     public void startRedTurn()
     {
-        turnMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        turnMotor.setPower(maxPower);
+//        turnMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        turnMotor.setPower(redPower);
     }
 
     public void runBlueOnce() throws InterruptedException

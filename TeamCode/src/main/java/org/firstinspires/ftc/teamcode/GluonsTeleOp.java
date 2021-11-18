@@ -87,9 +87,12 @@ public class GluonsTeleOp extends LinearOpMode {
             // DRIVE ====================================================
             //
             double maxPower = 1;
+            double maxCarousel=0.6;
             double forward = (Math.abs(gamepad1.left_stick_y) > 0.2 ? -gamepad1.left_stick_y : 0);
             double clockwise = Math.abs(gamepad1.right_stick_x) > 0.2 ? -gamepad1.right_stick_x : 0;
             double right = Math.abs(gamepad1.left_stick_x) > 0.2 ? gamepad1.left_stick_x : 0;
+            double carousel=gamepad2.left_stick_y;
+            carousel = Range.scale(carousel, -1, 1, -maxCarousel, maxCarousel);
             //Math for drive relative to theta
             clockwise *= 1;
 
@@ -184,24 +187,26 @@ public class GluonsTeleOp extends LinearOpMode {
 //
 
             //Lift Control
-//            if(gamepad2.a)
-//            {
-//                robot.lift.liftLowerLevel();
-//            }
-//            if(gamepad2.x)
-//            {
-//                robot.lift.liftMidLevel();
-//            }
-//            if(gamepad2.y)
-//            {
-//                robot.lift.liftUpperLevel();
-//            }
-//            if(gamepad2.b)
-//            {
-//                robot.lift.backToBase();
-//            }
+            if(gamepad2.a)
+            {
+                robot.lift.liftLowerLevel();
+            }
+            if(gamepad2.x)
+            {
+                robot.lift.liftMidLevel();
+            }
+            if(gamepad2.y)
+            {
+                robot.lift.liftUpperLevel();
+            }
+            if(gamepad2.b)
+            {
+                robot.lift.backToBase();
+            }
 //
             //Carousel Control
+            // Joystick Carousel
+            robot.carouselTurn.turnMotor.setPower(carousel);
             if(gamepad2.left_trigger>0.2) {
                 robot.carouselTurn.startBlueTurn();
             }

@@ -3,8 +3,6 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.Hardware.Flywheel;
-
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -32,18 +30,21 @@ public class WarehouseRedAuto extends LinearOpMode{
 
         robot.robotMotors.strafe(500,'l');
 //        char position = ConceptTensorFlowObjectDetectionWebcam.getposition();
-//        if (position = 'l')
+//        if (position == 'l')
 //        {
 //        lift.LowerLevel();
 //        }
-//        else if (position = 'c')
+//        else if (position == 'c')
 //        {
 //            lift.MidLevel();
 //        }
 //        else {
-//            lift.TopLevel();
+//            robot.lift.liftUpperLevel();
 //        }
 //        Claw.open();
+        robot.s.open();
+//        robot.lift.backToBase();
+
 
         robot.robotMotors.moveForward(750, -0.5);
         robot.robotMotors.strafe(2000,'l'); //plan has different value for speed, value is default

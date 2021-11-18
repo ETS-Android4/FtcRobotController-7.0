@@ -21,7 +21,7 @@ public class Servos {
 
     }
 
-    public void dDown() {drop.setPosition(DROP_DOWN);}
+    public void open() {drop.setPosition(DROP_DOWN);}
 //
-    public void dUp() {drop.setPosition(DROP_UP);}
+    public void close() {drop.setPosition(DROP_UP);}
 }
