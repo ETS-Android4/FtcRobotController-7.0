@@ -210,11 +210,7 @@ public class GluonsTeleOp extends LinearOpMode {
             if(gamepad2.left_trigger>0.2) {
                 robot.carouselTurn.startBlueTurn();
             }
-            else {
-                robot.carouselTurn.stopTurn();
-            }
-//
-            if(gamepad2.right_trigger>0.2) {
+            else if(gamepad2.right_trigger>0.2) {
                 robot.carouselTurn.startRedTurn();
             }
             else {
