@@ -8,8 +8,8 @@ public class Servos {
 
     private Servo drop;
 
-    private final double DROP_DOWN = 1; //numbers subject to change
-    private final double DROP_UP = 0.5; //numbers subject to change
+    private final double DROP_OPEN = 1; //numbers subject to change
+    private final double DROP_CLOSE = 0.75; //numbers subject to change
 
     public Servos(Servo d)
     {
@@ -21,7 +21,7 @@ public class Servos {
 
     }
 
-    public void open() {drop.setPosition(DROP_DOWN);}
+    public void open() {drop.setPosition(DROP_OPEN);}
 //
-    public void close() {drop.setPosition(DROP_UP);}
+    public void close() {drop.setPosition(DROP_CLOSE);}
 }

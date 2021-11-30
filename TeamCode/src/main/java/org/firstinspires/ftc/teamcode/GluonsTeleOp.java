@@ -169,18 +169,21 @@ public class GluonsTeleOp extends LinearOpMode {
 //            }
 //
             //Drop Controls
-//            if(gamepad1.a&&dropButtonCD==0)
-//            {
-//                if(!dropped) {
-//                    robot.s.dDown();
-//                    dropped=true;
-//                }
-//                else {
-//                    robot.s.dUp();
-//                    dropped=false;
-//                }
-//                dropButtonCD=12;
-//            }
+            if(gamepad1.a&&dropButtonCD==0)
+            {
+                telemetry.addLine("A pressed");
+                if(!dropped) {
+                    robot.s.open();
+                    dropped=true;
+                    telemetry.addLine("Dropped=true");
+                }
+                else {
+                    robot.s.close();
+                    dropped=false;
+                    telemetry.addLine("Dropped=false");
+                }
+                dropButtonCD=24;
+            }
 //
 //
 //            // Gamepad 2 - Functions GAMER MOMENTS 2020
@@ -296,6 +299,9 @@ public class GluonsTeleOp extends LinearOpMode {
             }
             if(latchButtonCD>0) {
                 latchButtonCD--;
+            }
+            if(dropButtonCD>0) {
+                dropButtonCD--;
             }
 
             // Stops phone from queuing too many commands and breaking GAMER MOMENTS 2020
