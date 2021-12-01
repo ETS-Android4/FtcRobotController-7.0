@@ -8,8 +8,8 @@ public class Servos {
 
     private Servo drop;
 
-    private final double DROP_OPEN = 1; //numbers subject to change
-    private final double DROP_CLOSE = 0.75; //numbers subject to change
+    private final double DROP_OPEN = .4; //numbers subject to change
+    private final double DROP_CLOSE = 0.25; //numbers subject to change
 
     public Servos(Servo d)
     {
