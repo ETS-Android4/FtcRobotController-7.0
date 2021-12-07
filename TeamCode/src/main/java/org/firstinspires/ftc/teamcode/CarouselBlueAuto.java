@@ -16,6 +16,7 @@ public class CarouselBlueAuto extends LinearOpMode{
     public void runOpMode() throws InterruptedException {
 
         robot.init(hardwareMap);
+        robot.robotMotors.turnOnEncoders();
 robot.tfod.activate();
 
         waitForStart();
@@ -29,8 +30,9 @@ robot.tfod.activate();
             }
         }, 29, TimeUnit.SECONDS);
 
-        robot.robotMotors.moveForward(2600, 0.6);
+//        robot.robotMotors.moveForward(2600, 0.6);
 
+        robot.robotMotors.moveForwardEn(24,0.5);
 
 
 

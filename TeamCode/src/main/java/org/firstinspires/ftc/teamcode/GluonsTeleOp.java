@@ -135,52 +135,18 @@ public class GluonsTeleOp extends LinearOpMode {
 ////            final double backRight = 1 * speed * Math.sin(direction + Math.PI / 4.0) - rotation;
 ////
 ////            robot.robotMotors.setMotorPower(frontLeft, frontRight, backLeft, backRight);
-//
-            // Reverse Intake
-//            if(gamepad1.right_trigger>0.2) {
-//
-//                robot.intake.reverseIntake();
-//            }
-//            else {
-//                robot.intake.noIntake();
-//            }
-//
-//            // Forward Intake
-//            if(gamepad1.left_trigger>0.2) {
-//                robot.intake.intake();
-//            }
-//            else {
-//                robot.intake.noIntake();
-//            }
-//
-//            //WobbleGoal Controls
-//            if(gamepad1.dpad_up)
-//            {
-//                robot.wobbleGoal.raise();
-//            }
-//            else
-//            {
-//                robot.wobbleGoal.noRaise();
-//            }
-//
-//            if(gamepad1.dpad_down)
-//            {
-//                robot.wobbleGoal.lower();
-//            }
+
 //
             //Drop Controls
-            if(gamepad1.a&&dropButtonCD==0)
+            if(gamepad2.dpad_left)
             {
-                telemetry.addLine("A pressed");
                 if(!dropped) {
                     robot.s.open();
                     dropped=true;
-                    telemetry.addLine("Dropped=true");
                 }
                 else {
                     robot.s.close();
                     dropped=false;
-                    telemetry.addLine("Dropped=false");
                 }
                 dropButtonCD=24;
             }
@@ -206,6 +172,23 @@ public class GluonsTeleOp extends LinearOpMode {
             {
                 robot.lift.backToBase();
             }
+
+            if(gamepad2.dpad_up)
+            {
+                robot.lift.moveUpWithoutEncoders();
+            }
+            else if(gamepad2.dpad_down)
+            {
+                robot.lift.moveDownWithoutEncoders();
+            }
+            else
+            {
+                robot.lift.liftMotor.setPower(0);
+            }
+
+            if(gamepad2.dpad_right)
+                robot.lift.reset();
+
 //
             //Carousel Control
             // Joystick Carousel
@@ -219,6 +202,7 @@ public class GluonsTeleOp extends LinearOpMode {
             else {
                 robot.carouselTurn.stopTurn();
             }
+
 //            //Flap Control
 //            if(flapButtonCD == 0 && gamepad2.y) {
 //                if(!flapUp) {
@@ -283,7 +267,7 @@ public class GluonsTeleOp extends LinearOpMode {
 
             telemetry.addData("Gyro Heading", robot.imu.getHeadingDegrees());
             telemetry.addData("Lift Value",robot.lift.liftMotor.getCurrentPosition());
-            telemetry.addData("Lift Value",robot.lift.liftMotor.getTargetPosition());
+            telemetry.addData("Target Value",robot.lift.liftMotor.getTargetPosition());
 
 //            telemetry.addData("Alpha", h.color.alpha());
 //            telemetry.addData("Red  ", h.color.red());

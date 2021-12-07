@@ -46,6 +46,12 @@ public class RobotMotors {
     private DcMotorEx backLeft;      // Hub 2 Slot 1    GAMER MOMENTS 2020
     protected ArrayList<DcMotorEx> wheels = new ArrayList<>();
 
+    private static final double TICKS_PER_REV = 751.8; //encoder resolution of 223 rpm motor
+    private static final double WHEEL_RADIUS = 2;   // Radius in inches.
+    private static final double IN_PER_REV = 2 * Math.PI * WHEEL_RADIUS;
+    private static double TICKS_PER_IN = TICKS_PER_REV / IN_PER_REV;
+
+
     protected MoveStyle direction;
 
     public enum MoveStyle {
@@ -115,6 +121,15 @@ public class RobotMotors {
         frontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+    }
+
+    public void resetEncoders()
+    {
+        frontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        backLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        backRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
     }
 
     public void turnOnEncoders()
@@ -208,6 +223,20 @@ public class RobotMotors {
         frontLeft.setPower(0);
         backRight.setPower(0);
         backLeft.setPower(0);
+    }
+
+    // ENCODER METHODS
+    public void moveForwardEn(double distance, double time) // in, sec
+    {
+        double s= distance/time * TICKS_PER_REV / IN_PER_REV; //in ticks/second
+//        resetEncoders();
+
+        for (int i = 0; i < wheels.size(); i++) {
+            wheels.get(i).setPower(s);
+        }
+
+
+
     }
 
 }
