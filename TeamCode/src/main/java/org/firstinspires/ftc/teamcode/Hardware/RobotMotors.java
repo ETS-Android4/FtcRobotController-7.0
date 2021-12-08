@@ -226,7 +226,7 @@ public class RobotMotors {
     }
 
     // ENCODER METHODS
-    public void moveForwardEn(double distance, double time) // in, sec
+    public void moveForwardEn(double distance, double time) /* in, sec */ throws InterruptedException
     {
         double s= distance/time * TICKS_PER_REV / IN_PER_REV; //in ticks/second
 //        resetEncoders();
@@ -235,8 +235,10 @@ public class RobotMotors {
             wheels.get(i).setPower(s);
         }
 
-
-
+    Thread.sleep((long)(time*1000));
+        for (int i = 0; i < wheels.size(); i++) {
+            wheels.get(i).setPower(0);
+        }
     }
 
 }
