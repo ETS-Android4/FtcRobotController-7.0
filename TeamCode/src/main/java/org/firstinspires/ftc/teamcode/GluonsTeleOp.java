@@ -74,7 +74,7 @@ public class GluonsTeleOp extends LinearOpMode {
         //Activates TFOD upon initialization
        // if (robot.tfod != null) {
             robot.tfod.activate();
-            robot.tfod.setZoom(1.5, 16.0/9.0);
+            robot.tfod.setZoom(1, 16.0/9.0);
        // }
 
         waitForStart();
