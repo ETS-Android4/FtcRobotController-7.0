@@ -33,10 +33,7 @@ public class WarehouseRedAuto extends LinearOpMode{
             }
         }, 29, TimeUnit.SECONDS);
 
-//        //Move forward to shooting position
-//        robot.robotMotors.moveForward(2000, 0.8);
 
-        robot.robotMotors.strafe(500,'l');
 
         //camera softwars
         //Constants for positions of object
@@ -82,12 +79,12 @@ public class WarehouseRedAuto extends LinearOpMode{
 
                         i++;
 
-
-
                     }
                 }
             }
         }
+        telemetry.addData("Left: ",leftPos);
+        telemetry.addData("Top: ", topPos);
 
         //Detecting which position element is at (from left and top)
         if(leftPos>=X_LEFT && leftPos<=100)
@@ -96,36 +93,35 @@ public class WarehouseRedAuto extends LinearOpMode{
         }
         else if(leftPos>=X_LEFT && leftPos<=630)
         {
-            result='c';
+            result='m';
         }
         else
         {
-            result='r';
+            result='t';
         }
+        telemetry.addData("Level: ", result);
 
-//        char position = ConceptTensorFlowObjectDetectionWebcam.getposition();
-//        if (position == 'l')
-//        {
-//        lift.LowerLevel();
-//        }
-//        else if (position == 'c')
-//        {
-//            lift.MidLevel();
-//        }
-//        else {
-//            robot.lift.liftUpperLevel();
-//        }
-//        Claw.open();
+        if (result == 'l')
+        {
+        robot.lift.liftLowerLevel();
+        }
+        else if (result == 'm')
+        {
+            robot.lift.liftMidLevel();
+        }
+        else {
+            robot.lift.liftUpperLevel();
+        }
+        robot.robotMotors.moveForward(1000,0.5);
         robot.s.open();
-//        robot.lift.backToBase();
+        robot.robotMotors.moveForward(500,-0.5);
+        robot.lift.backToBase();
 
-
-        robot.robotMotors.moveForward(750, -0.5);
-        robot.robotMotors.strafe(2000,'l'); //plan has different value for speed, value is default
+//        robot.robotMotors.strafe(2000,'l'); //plan has different value for speed, value is default
 //        robot.carouselTurn.runOnce(); //need to make RunOnce method in carousel RedAuto Class
-        robot.robotMotors.strafe(200,'r');
+//        robot.robotMotors.strafe(200,'r');
         robot.robotMotors.turn(90,'r');
-        robot.robotMotors.moveForward(900, 0.4);
+        robot.robotMotors.moveForward(1000, 0.7);
 
 
 

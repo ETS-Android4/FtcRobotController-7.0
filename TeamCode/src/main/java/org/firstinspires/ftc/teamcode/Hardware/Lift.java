@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 public class Lift {
     public DcMotor liftMotor;
 
-    public static double maxPower = 0.8;
-    private static final double TICKS_PER_REVOLUTION = 145.1*24; //worm gear has ratio of 24:1
+    public static double maxPower = 1;
+    private static final double TICKS_PER_REVOLUTION = 751.8*24; //worm gear has ratio of 24:1
 
     public Lift(DcMotor l) {
         l.setPower(0);

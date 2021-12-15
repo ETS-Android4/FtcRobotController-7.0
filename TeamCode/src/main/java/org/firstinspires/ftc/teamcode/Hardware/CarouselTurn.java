@@ -21,7 +21,7 @@ public class CarouselTurn {
 //    public static double redPower=-0.4;
 //    public static double bluePower=0.8;
 
-    public static double maxPower=0.4;
+    public static double maxPower=0.35;
 
     public void startBlueTurn()
     {
