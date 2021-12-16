@@ -153,7 +153,7 @@ public class GluonsTeleOp extends LinearOpMode {
                         dropped = false;
                     }
                 }
-                //dropButtonCD=24;
+                //dropButtonCD=2000;
             }
             else
             {
