@@ -69,7 +69,7 @@ public class GluonsTeleOp extends LinearOpMode {
         int dropButtonCD = 0;
         boolean dropped = false;
 
-        boolean pressed=false; //test
+        boolean clawPressed=false;
 
         robot.robotMotors.turnOffEncoders();
 
@@ -142,7 +142,9 @@ public class GluonsTeleOp extends LinearOpMode {
             //Drop Controls
             if(gamepad2.dpad_left)
             {
-              //  if(!pressed) {
+                if(!clawPressed)
+                {
+                    clawPressed=true;
                     if (!dropped) {
                         robot.s.open();
                         dropped = true;
@@ -150,8 +152,12 @@ public class GluonsTeleOp extends LinearOpMode {
                         robot.s.close();
                         dropped = false;
                     }
-                //}
-                dropButtonCD=2000;
+                }
+                //dropButtonCD=2000;
+            }
+            else
+            {
+                clawPressed=false;
             }
 //
 //
