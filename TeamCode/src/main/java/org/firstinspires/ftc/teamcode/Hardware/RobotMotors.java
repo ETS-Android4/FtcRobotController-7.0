@@ -204,14 +204,14 @@ public class RobotMotors {
 
     public void strafe(int time, char dir) throws InterruptedException {
 
-        if (dir == 'l') {
+        if (dir == 'r') {
 
             frontRight.setPower(-.8);
             frontLeft.setPower(.8);
             backRight.setPower(.8);
             backLeft.setPower(-.8);
         }
-        else if (dir == 'r'){
+        else if (dir == 'l'){
 
             frontRight.setPower(.8);
             frontLeft.setPower(-.8);

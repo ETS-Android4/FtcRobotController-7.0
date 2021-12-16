@@ -18,9 +18,11 @@ public class WarehouseRedAuto extends LinearOpMode{
         robot.init(hardwareMap);
         robot.tfod.activate();
         robot.tfod.setZoom(1, 16.0/9.0);
+        robot.s.close();
+        robot.lift.backToBase();
 
         boolean found=false;
-        final String ELEMENT_LABEL="";
+        final String ELEMENT_LABEL="Duck";
 
         waitForStart();
 
@@ -47,10 +49,11 @@ public class WarehouseRedAuto extends LinearOpMode{
 
 
         // Finding the element
-        int minDetections=8; //minimum number of "frames" the robot detects the element for to ensure it is detected properly
+        int minDetections=1; //minimum number of "frames" the robot detects the element for to ensure it is detected properly
         int detections=0;
         while (!found)
         {
+            telemetry.addData("found=", found);
             if (robot.tfod != null) {
                 // getUpdatedRecognitions() will return null if no new information is available since
                 // the last time that call was made.
@@ -65,7 +68,7 @@ public class WarehouseRedAuto extends LinearOpMode{
                                 recognition.getLeft(), recognition.getTop());
                         telemetry.addData(String.format("  right,bottom (%d)", i), "%.03f , %.03f",
                                 recognition.getRight(), recognition.getBottom());
-
+telemetry.update();
                         if(recognition.getLabel().equals(ELEMENT_LABEL))
                         {
                             detections++;
@@ -87,11 +90,11 @@ public class WarehouseRedAuto extends LinearOpMode{
         telemetry.addData("Top: ", topPos);
 
         //Detecting which position element is at (from left and top)
-        if(leftPos>=X_LEFT && leftPos<=100)
+        if(leftPos>=X_LEFT && leftPos<=X_LEFT+200)
         {
             result='l';
         }
-        else if(leftPos>=X_LEFT && leftPos<=630)
+        else if(leftPos>=X_LEFT && leftPos<8)
         {
             result='m';
         }
@@ -100,6 +103,7 @@ public class WarehouseRedAuto extends LinearOpMode{
             result='t';
         }
         telemetry.addData("Level: ", result);
+        telemetry.update();
 
         if (result == 'l')
         {
@@ -112,16 +116,25 @@ public class WarehouseRedAuto extends LinearOpMode{
         else {
             robot.lift.liftUpperLevel();
         }
-        robot.robotMotors.moveForward(1000,0.5);
+        Thread.sleep(1000);
+        robot.robotMotors.strafe(1000,'l');
+        Thread.sleep(1000);
+        robot.robotMotors.moveForward(1200,0.5);
+        Thread.sleep(1000);
         robot.s.open();
-        robot.robotMotors.moveForward(500,-0.5);
-        robot.lift.backToBase();
+        Thread.sleep(1000);
+        robot.robotMotors.moveForward(250,-0.5);
+        Thread.sleep(1000);
+//        robot.lift.backToBase();
+//        Thread.sleep(1000);
 
 //        robot.robotMotors.strafe(2000,'l'); //plan has different value for speed, value is default
 //        robot.carouselTurn.runOnce(); //need to make RunOnce method in carousel RedAuto Class
 //        robot.robotMotors.strafe(200,'r');
         robot.robotMotors.turn(90,'r');
-        robot.robotMotors.moveForward(1000, 0.7);
+        Thread.sleep(1000);
+        robot.robotMotors.moveForward(2500, 0.7);
+
 
 
 
