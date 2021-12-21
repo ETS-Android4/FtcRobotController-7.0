@@ -36,7 +36,7 @@ public class Lift {
         reached(liftMotor.getTargetPosition());
     }
     public void liftMidLevel() {
-        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*1.1/7)); //value is subject to change
+        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*1.2/7)); //value is subject to change
         liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         liftMotor.setPower(maxPower);
         reached(liftMotor.getTargetPosition());

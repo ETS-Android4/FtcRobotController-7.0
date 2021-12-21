@@ -68,8 +68,9 @@ public class GluonsTeleOp extends LinearOpMode {
         boolean latched = false;
         int dropButtonCD = 0;
         boolean dropped = false;
-
         boolean clawPressed=false;
+
+        String liftState="MANUAL";
 
         robot.robotMotors.turnOffEncoders();
 
@@ -167,11 +168,11 @@ public class GluonsTeleOp extends LinearOpMode {
             //Lift Control
             if(gamepad2.a)
             {
-                robot.lift.liftLowerLevel();
+                liftState="TO_LOWER";
             }
             if(gamepad2.x)
             {
-                robot.lift.liftMidLevel();
+                liftState="TO_MID";
             }
             if(gamepad2.y)
             {
@@ -198,6 +199,15 @@ public class GluonsTeleOp extends LinearOpMode {
             if(gamepad2.dpad_right)
                 robot.lift.reset();
 
+            //states: TO_LOWER, TO_MID, TO_UPPER, TO_BASE, MANUAL
+            if (liftState.equals("TO_LOWER"))
+            {
+                robot.lift.liftLowerLevel();
+            }
+            if (liftState.equals("TO_MID"))
+            {
+                robot.lift.liftMidLevel();
+            }
 //
             //Carousel Control
             // Joystick Carousel

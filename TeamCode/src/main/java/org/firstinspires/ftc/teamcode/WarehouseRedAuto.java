@@ -37,7 +37,6 @@ public class WarehouseRedAuto extends LinearOpMode{
 
 
 
-        //camera softwars
         //Constants for positions of object
         final double X_LEFT=0;
         final double X_MID=530;
@@ -94,7 +93,7 @@ telemetry.update();
         {
             result='l';
         }
-        else if(leftPos>=X_LEFT && leftPos<8)
+        else if(leftPos>=X_LEFT && leftPos<X_RIGHT-200)
         {
             result='m';
         }
@@ -134,7 +133,7 @@ telemetry.update();
         robot.robotMotors.turn(90,'r');
         Thread.sleep(1000);
         robot.robotMotors.moveForward(2500, 0.7);
-
+        robot.lift.backToBase();
 
 
 
