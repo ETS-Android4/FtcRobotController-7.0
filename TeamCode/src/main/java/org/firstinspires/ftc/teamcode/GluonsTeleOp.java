@@ -94,8 +94,8 @@ public class GluonsTeleOp extends LinearOpMode {
             double forward = (Math.abs(gamepad1.left_stick_y) > 0.2 ? -gamepad1.left_stick_y : 0);
             double clockwise = Math.abs(gamepad1.right_stick_x) > 0.2 ? -gamepad1.right_stick_x : 0;
             double right = Math.abs(gamepad1.left_stick_x) > 0.2 ? gamepad1.left_stick_x : 0;
-            double carousel=gamepad2.left_stick_y;
-            carousel = Range.scale(carousel, -1, 1, -maxCarousel, maxCarousel);
+//            double carousel=gamepad2.left_stick_y;
+//            carousel = Range.scale(carousel, -1, 1, -maxCarousel, maxCarousel);
             //Math for drive relative to theta
             clockwise *= 1;
 
@@ -176,42 +176,59 @@ public class GluonsTeleOp extends LinearOpMode {
             }
             if(gamepad2.y)
             {
-                robot.lift.liftUpperLevel();
+                liftState="TO_UPPER";
             }
             if(gamepad2.b)
             {
-                robot.lift.backToBase();
+                liftState="TO_BASE";
             }
 
             if(gamepad2.dpad_up)
             {
+                liftState="MANUAL";
                 robot.lift.moveUpWithoutEncoders();
             }
             else if(gamepad2.dpad_down)
             {
+                liftState="MANUAL";
                 robot.lift.moveDownWithoutEncoders();
             }
-            else
-            {
+            else if(liftState.equals("MANUAL")) {
                 robot.lift.liftMotor.setPower(0);
             }
 
-            if(gamepad2.dpad_right)
+            if(gamepad2.dpad_right) {
                 robot.lift.reset();
-
+            }
+telemetry.addData("liftState: ", liftState);
             //states: TO_LOWER, TO_MID, TO_UPPER, TO_BASE, MANUAL
             if (liftState.equals("TO_LOWER"))
             {
                 robot.lift.liftLowerLevel();
             }
-            if (liftState.equals("TO_MID"))
+            else if (liftState.equals("TO_MID"))
             {
                 robot.lift.liftMidLevel();
             }
+            else if (liftState.equals("TO_UPPER"))
+            {
+                robot.lift.liftUpperLevel();
+            }
+            else if (liftState.equals("TO_BASE"))
+            {
+                robot.lift.backToBase();
+            }
+
+            if (robot.lift.stopWhenReached())
+            {
+                liftState="MANUAL";
+            }
+
+
 //
             //Carousel Control
-            // Joystick Carousel
-            robot.carouselTurn.turnMotor.setPower(carousel);
+//            // Joystick Carousel
+//            robot.carouselTurn.turnMotor.setPower(carousel);
             if(gamepad2.left_trigger>0.2) {
                 robot.carouselTurn.startBlueTurn();
             }

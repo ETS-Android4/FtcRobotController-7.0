@@ -9,6 +9,7 @@ public class Lift {
     public static double maxPower = 1;
     private static final double TICKS_PER_REVOLUTION = 751.8*24; //worm gear has ratio of 24:1
 
+
     public Lift(DcMotor l) {
         l.setPower(0);
         l.setDirection(DcMotor.Direction.FORWARD);
@@ -27,25 +28,25 @@ public class Lift {
         liftMotor.setTargetPosition(0);
         liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         liftMotor.setPower(maxPower);
-        reached(liftMotor.getTargetPosition());
+//        reached(liftMotor.getTargetPosition());
     }
     public void liftLowerLevel() {
-        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*0.6/7)); //value is subject to change
+        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*0.7/7)); //value is subject to change
         liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         liftMotor.setPower(maxPower);
-        reached(liftMotor.getTargetPosition());
+//        reached(liftMotor.getTargetPosition());
     }
     public void liftMidLevel() {
-        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*1.2/7)); //value is subject to change
+        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*1.4/7)); //value is subject to change
         liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         liftMotor.setPower(maxPower);
-        reached(liftMotor.getTargetPosition());
+//        reached(liftMotor.getTargetPosition());
     }
     public void liftUpperLevel() {
-        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*(1.9/7))); //value is subject to change
+        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*(1.95/7))); //value is subject to change
         liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         liftMotor.setPower(maxPower);
-        reached(liftMotor.getTargetPosition());
+//        reached(liftMotor.getTargetPosition());
     }
 
     public void moveUpWithoutEncoders() {
@@ -61,13 +62,26 @@ public class Lift {
     public void reset() {
         liftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
+//
+//    private void reached(int target)
+//    {
+//        while(!(liftMotor.getCurrentPosition()>=target-3 && liftMotor.getCurrentPosition()<=target+3))
+//        {
+//
+//        }
+//        liftMotor.setPower(0);
+//    }
 
-    private void reached(int target)
+    public boolean stopWhenReached()
     {
-        while(!(liftMotor.getCurrentPosition()>=target-3 && liftMotor.getCurrentPosition()<=target+3))
+        int target=liftMotor.getTargetPosition();
+        if(liftMotor.getCurrentPosition()>=target-3 && liftMotor.getCurrentPosition()<=target+3)
         {
+            liftMotor.setPower(0);
+            return true;
 
         }
-        liftMotor.setPower(0);
+        return false;
     }
+
 }
