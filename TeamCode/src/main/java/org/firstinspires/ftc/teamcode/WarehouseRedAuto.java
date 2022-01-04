@@ -134,6 +134,7 @@ telemetry.update();
         Thread.sleep(1000);
         robot.robotMotors.moveForward(2500, 0.7);
         robot.lift.backToBase();
+        robot.lift.liftLowerLevel();
 
 
 
