@@ -106,16 +106,6 @@ public class CarouselBlueAuto extends LinearOpMode{
         telemetry.addData("Level: ", result);
         telemetry.update();
 
-        robot.robotMotors.moveForward(500,0.8);
-        Thread.sleep(1000);
-        robot.robotMotors.turn(90,'l');
-        Thread.sleep(1000);
-        robot.robotMotors.moveForward(500,-0.8);
-        Thread.sleep(1000);
-        robot.carouselTurn.runBlueOnce();
-        Thread.sleep(1000);
-        robot.robotMotors.strafe(500,'r');
-
         if (result == 'l')
         {
             robot.lift.liftLowerLevel();
@@ -127,12 +117,24 @@ public class CarouselBlueAuto extends LinearOpMode{
         else {
             robot.lift.liftUpperLevel();
         }
+
+        robot.robotMotors.moveForward(200,0.8);
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(1200,0.5);
+        robot.robotMotors.strafe(1015,'r');
+        Thread.sleep(1000);
+        robot.carouselTurn.runBlueOnce();
+        Thread.sleep(1000);
+        robot.robotMotors.moveForward(1750,0.5);
+        Thread.sleep(1000);
+        robot.robotMotors.turn(90,'l');
+        Thread.sleep(1000);
+        robot.robotMotors.moveForward(1000,0.8);
         Thread.sleep(1000);
         robot.s.open();
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(250,-0.5);
+        robot.robotMotors.strafe(900,'l');
+        Thread.sleep(1000);
+        robot.robotMotors.moveForward(2500,0.7);
         Thread.sleep(1000);
 //        robot.lift.backToBase();
 //        Thread.sleep(1000);
@@ -140,10 +142,7 @@ public class CarouselBlueAuto extends LinearOpMode{
 //        robot.robotMotors.strafe(2000,'l'); //plan has different value for speed, value is default
 //        robot.carouselTurn.runOnce(); //need to make RunOnce method in carousel RedAuto Class
 //        robot.robotMotors.strafe(200,'r');
-        robot.robotMotors.strafe(500,'l');
-        Thread.sleep(1000);
-        robot.robotMotors.moveForward(3000, 0.7);
-        robot.lift.backToBase();
+        robot.lift.liftLowerLevel();
 
 
 

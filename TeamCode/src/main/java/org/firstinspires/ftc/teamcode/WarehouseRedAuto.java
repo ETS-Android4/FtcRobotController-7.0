@@ -44,12 +44,14 @@ public class WarehouseRedAuto extends LinearOpMode{
         final double Y_DUCK=340;
         float leftPos=0;
         float topPos=0;
-        char result;
+        char result='m';
+        boolean failsafe=false;
 
 
         // Finding the element
         int minDetections=1; //minimum number of "frames" the robot detects the element for to ensure it is detected properly
         int detections=0;
+        long startTime=System.currentTimeMillis();
         while (!found)
         {
             telemetry.addData("found=", found);
@@ -67,15 +69,13 @@ public class WarehouseRedAuto extends LinearOpMode{
                                 recognition.getLeft(), recognition.getTop());
                         telemetry.addData(String.format("  right,bottom (%d)", i), "%.03f , %.03f",
                                 recognition.getRight(), recognition.getBottom());
-telemetry.update();
-                        if(recognition.getLabel().equals(ELEMENT_LABEL))
-                        {
+                        telemetry.update();
+                        if (recognition.getLabel().equals(ELEMENT_LABEL)) {
                             detections++;
-                            if(detections>=minDetections)
-                            {
-                                found=true;
-                                leftPos=recognition.getLeft();
-                                topPos=recognition.getTop();
+                            if (detections >= minDetections) {
+                                found = true;
+                                leftPos = recognition.getLeft();
+                                topPos = recognition.getTop();
                             }
                         }
 
@@ -84,12 +84,21 @@ telemetry.update();
                     }
                 }
             }
+            long elapsedTime=System.currentTimeMillis();
+            long num=elapsedTime-startTime;
+            if(num>5000) {
+                failsafe=true;
+                break;
+            }
         }
         telemetry.addData("Left: ",leftPos);
         telemetry.addData("Top: ", topPos);
 
         //Detecting which position element is at (from left and top)
-        if(leftPos>=X_LEFT && leftPos<=X_LEFT+200)
+        if(failsafe) {
+
+        }
+        else if(leftPos>=X_LEFT && leftPos<=X_LEFT+200)
         {
             result='l';
         }
@@ -104,16 +113,16 @@ telemetry.update();
         telemetry.addData("Level: ", result);
         telemetry.update();
 
-        if (result == 'l')
+        if (result == 't' || failsafe)
         {
-        robot.lift.liftLowerLevel();
+        robot.lift.liftUpperLevel();
         }
         else if (result == 'm')
         {
             robot.lift.liftMidLevel();
         }
         else {
-            robot.lift.liftUpperLevel();
+            robot.lift.liftLowerLevel();
         }
         Thread.sleep(1000);
         robot.robotMotors.strafe(1000,'l');
@@ -132,7 +141,7 @@ telemetry.update();
 //        robot.robotMotors.strafe(200,'r');
         robot.robotMotors.turn(90,'r');
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(2500, 0.7);
+        robot.robotMotors.moveForward(2000, 0.7);
         robot.lift.backToBase();
         robot.lift.liftLowerLevel();
 

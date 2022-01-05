@@ -43,12 +43,14 @@ public class WarehouseBlueAuto extends LinearOpMode{
         final double Y_DUCK=340;
         float leftPos=0;
         float topPos=0;
-        char result;
+        char result='m';
+        boolean failsafe=false;
 
 
         // Finding the element
         int minDetections=1; //minimum number of "frames" the robot detects the element for to ensure it is detected properly
         int detections=0;
+        long startTime=System.currentTimeMillis();
         while (!found)
         {
             telemetry.addData("found=", found);
@@ -83,12 +85,21 @@ public class WarehouseBlueAuto extends LinearOpMode{
                     }
                 }
             }
+            long elapsedTime=System.currentTimeMillis();
+            long num=elapsedTime-startTime;
+            if(num>5000) {
+                failsafe=true;
+                break;
+            }
         }
         telemetry.addData("Left: ",leftPos);
         telemetry.addData("Top: ", topPos);
 
         //Detecting which position element is at (from left and top)
-        if(leftPos>=X_LEFT && leftPos<=X_LEFT+200)
+        if(failsafe) {
+
+        }
+        else if(leftPos>=X_LEFT && leftPos<=X_LEFT+200)
         {
             result='l';
         }
@@ -103,16 +114,16 @@ public class WarehouseBlueAuto extends LinearOpMode{
         telemetry.addData("Level: ", result);
         telemetry.update();
 
-        if (result == 'l')
+        if (result == 't' || failsafe)
         {
-            robot.lift.liftLowerLevel();
+            robot.lift.liftUpperLevel();
         }
         else if (result == 'm')
         {
             robot.lift.liftMidLevel();
         }
         else {
-            robot.lift.liftUpperLevel();
+            robot.lift.liftLowerLevel();
         }
         Thread.sleep(1000);
         robot.robotMotors.strafe(1000,'r');
@@ -129,9 +140,9 @@ public class WarehouseBlueAuto extends LinearOpMode{
 //        robot.robotMotors.strafe(2000,'l'); //plan has different value for speed, value is default
 //        robot.carouselTurn.runOnce(); //need to make RunOnce method in carousel RedAuto Class
 //        robot.robotMotors.strafe(200,'r');
-        robot.robotMotors.turn(90,'l');
+        robot.robotMotors.turn(85,'l');
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(2500, 0.7);
+        robot.robotMotors.moveForward(2250, 0.7);
         robot.lift.backToBase();
 
         executor.schedule(new Runnable() {
