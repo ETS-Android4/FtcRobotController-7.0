@@ -30,6 +30,11 @@ public class Lift {
         liftMotor.setPower(maxPower);
 //        reached(liftMotor.getTargetPosition());
     }
+    public void aboveZero() {
+        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*0.2/7));
+        liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        liftMotor.setPower(maxPower);
+    }
     public void liftLowerLevel() {
         liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*0.7/7)); //value is subject to change
         liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);

@@ -141,7 +141,7 @@ public class GluonsTeleOp extends LinearOpMode {
 
 //
             //Drop Controls
-            if(gamepad2.dpad_left)
+            if(gamepad2.right_trigger>0.8)
             {
                 if(!clawPressed)
                 {
@@ -182,6 +182,10 @@ public class GluonsTeleOp extends LinearOpMode {
             {
                 liftState="TO_BASE";
             }
+            if(gamepad2.left_trigger>0.8)
+            {
+                liftState="TO_ABOVEZERO";
+            }
 
             if(gamepad2.dpad_up)
             {
@@ -193,6 +197,11 @@ public class GluonsTeleOp extends LinearOpMode {
                 liftState="MANUAL";
                 robot.lift.moveDownWithoutEncoders();
             }
+            else if (gamepad1.b)
+            {
+                liftState="MANUAL";
+                robot.lift.liftMotor.setPower(0);
+            }
             else if(liftState.equals("MANUAL")) {
                 robot.lift.liftMotor.setPower(0);
             }
@@ -200,11 +209,15 @@ public class GluonsTeleOp extends LinearOpMode {
             if(gamepad2.dpad_right) {
                 robot.lift.reset();
             }
-telemetry.addData("liftState: ", liftState);
+            telemetry.addData("liftState: ", liftState);
             //states: TO_LOWER, TO_MID, TO_UPPER, TO_BASE, MANUAL
             if (liftState.equals("TO_LOWER"))
             {
                 robot.lift.liftLowerLevel();
+            }
+            else if(liftState.equals("TO_ABOVEZERO"))
+            {
+                robot.lift.aboveZero();
             }
             else if (liftState.equals("TO_MID"))
             {
@@ -229,11 +242,11 @@ telemetry.addData("liftState: ", liftState);
             //Carousel Control
 //            // Joystick Carousel
 //            robot.carouselTurn.turnMotor.setPower(carousel);
-            if(gamepad2.left_trigger>0.2) {
-                robot.carouselTurn.startBlueTurn();
-            }
-            else if(gamepad2.right_trigger>0.2) {
+            if(gamepad2.left_bumper) {
                 robot.carouselTurn.startRedTurn();
+            }
+            else if(gamepad2.right_bumper) {
+                robot.carouselTurn.startBlueTurn();
             }
             else {
                 robot.carouselTurn.stopTurn();
