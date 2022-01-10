@@ -125,13 +125,13 @@ public class WarehouseRedAuto extends LinearOpMode{
             robot.lift.liftLowerLevel();
         }
         Thread.sleep(1000);
-        robot.robotMotors.strafe(1000,'l');
+        robot.robotMotors.strafe(900,'l');
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(1200,0.5);
+        robot.robotMotors.moveForward(900,0.5);
         Thread.sleep(1000);
         robot.s.open();
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(250,-0.5);
+        robot.robotMotors.moveForward(150,-0.5);
         Thread.sleep(1000);
 //        robot.lift.backToBase();
 //        Thread.sleep(1000);

@@ -128,11 +128,11 @@ public class WarehouseBlueAuto extends LinearOpMode{
         Thread.sleep(1000);
         robot.robotMotors.strafe(1000,'r');
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(1200,0.5);
+        robot.robotMotors.moveForward(1100,0.5);
         Thread.sleep(1000);
         robot.s.open();
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(250,-0.5);
+        robot.robotMotors.moveForward(150,-0.5);
         Thread.sleep(1000);
 //        robot.lift.backToBase();
 //        Thread.sleep(1000);
