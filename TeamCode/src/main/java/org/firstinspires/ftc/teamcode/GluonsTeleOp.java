@@ -140,8 +140,14 @@ public class GluonsTeleOp extends LinearOpMode {
 ////            robot.robotMotors.setMotorPower(frontLeft, frontRight, backLeft, backRight);
 
 //
+
+            //Gamepad 1
+            if(gamepad1.dpad_up)
+            {
+                robot.robotMotors.moveForwardEn(12.0);
+            }
             //Drop Controls
-            if(gamepad2.right_trigger>0.8)
+            if(gamepad2.left_trigger>0.8)
             {
                 if(!clawPressed)
                 {
@@ -182,7 +188,7 @@ public class GluonsTeleOp extends LinearOpMode {
             {
                 liftState="TO_BASE";
             }
-            if(gamepad2.left_trigger>0.8)
+            if(gamepad2.right_trigger>0.8)
             {
                 liftState="TO_ABOVEZERO";
             }

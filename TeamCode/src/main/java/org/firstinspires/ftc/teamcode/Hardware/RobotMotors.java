@@ -226,19 +226,47 @@ public class RobotMotors {
     }
 
     // ENCODER METHODS
-    public void moveForwardEn(double distance, double time) /* in, sec */ throws InterruptedException
+    public void moveForwardEn(double distance) /* in, sec */ throws InterruptedException
     {
-        double s= distance/time * TICKS_PER_REV / IN_PER_REV; //in ticks/second
+//        double s= distance/time * TICKS_PER_REV / IN_PER_REV; //in ticks/second
 //        resetEncoders();
 
-        for (int i = 0; i < wheels.size(); i++) {
-            wheels.get(i).setPower(s);
+//        for (int i = 0; i < wheels.size(); i++) {
+//            wheels.get(i).setPower(s);
+//        }
+//
+//    Thread.sleep((long)(time*1000));
+//        for (int i = 0; i < wheels.size(); i++) {
+//            wheels.get(i).setPower(0);
+//        }
+        resetEncoders();
+        turnOnEncoders();
+        for(int i=0; i<4; i++)
+        {
+            wheels.get(i).setTargetPosition((int)(TICKS_PER_IN*distance));
+            wheels.get(i).setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            wheels.get(i).setPower(0.8);
         }
+        while(!stopWhenReached())
+        {
 
-    Thread.sleep((long)(time*1000));
-        for (int i = 0; i < wheels.size(); i++) {
-            wheels.get(i).setPower(0);
         }
+        setMotorPower(0);
+        turnOffEncoders();
+
     }
+
+    public boolean stopWhenReached()
+    {
+        int target=frontRight.getTargetPosition();
+        if(frontRight.getCurrentPosition()>=target-3 && frontRight.getCurrentPosition()<=target+3)
+        {
+            frontRight.setPower(0);
+            return true;
+
+        }
+        return false;
+    }
+
 
 }
