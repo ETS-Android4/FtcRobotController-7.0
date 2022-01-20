@@ -118,23 +118,23 @@ public class CarouselBlueAuto extends LinearOpMode{
             robot.lift.liftUpperLevel();
         }
 
-        robot.robotMotors.moveForward(200,0.8);
+        robot.robotMotors.moveForwardEn(8);
         Thread.sleep(1000);
         robot.robotMotors.strafe(1015,'r');
         Thread.sleep(1000);
         robot.carouselTurn.runBlueOnce();
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(1750,0.5);
+        robot.robotMotors.moveForwardEn(30);
         Thread.sleep(1000);
         robot.robotMotors.turn(90,'l');
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(1000,0.8);
+        robot.robotMotors.moveForwardEn(24);
         Thread.sleep(1000);
         robot.s.open();
         Thread.sleep(1000);
         robot.robotMotors.strafe(900,'l');
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(2500,0.7);
+        robot.robotMotors.moveForwardEn(24);
         Thread.sleep(1000);
 //        robot.lift.backToBase();
 //        Thread.sleep(1000);
