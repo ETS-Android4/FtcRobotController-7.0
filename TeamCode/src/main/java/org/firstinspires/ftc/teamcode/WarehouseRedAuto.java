@@ -86,7 +86,7 @@ public class WarehouseRedAuto extends LinearOpMode{
             }
             long elapsedTime=System.currentTimeMillis();
             long num=elapsedTime-startTime;
-            if(num>5000) {
+            if(num>2000) {
                 failsafe=true;
                 break;
             }
@@ -116,32 +116,50 @@ public class WarehouseRedAuto extends LinearOpMode{
         if (result == 't' || failsafe)
         {
         robot.lift.liftUpperLevel();
+        Thread.sleep(1000);
+        robot.robotMotors.strafe(900,'l');
+        Thread.sleep(1000);
+        robot.robotMotors.moveForward(1050,0.5);
+        Thread.sleep(1000);
+        robot.s.open();
+        Thread.sleep(1000);
+        robot.robotMotors.moveForward(350,-0.5);
+            Thread.sleep(1000);
         }
         else if (result == 'm')
         {
             robot.lift.liftMidLevel();
+            Thread.sleep(1000);
+            robot.robotMotors.strafe(900,'l');
+            Thread.sleep(1000);
+            robot.robotMotors.moveForward(1000,0.5);
+            Thread.sleep(1000);
+            robot.s.open();
+            Thread.sleep(1000);
+            robot.robotMotors.moveForward(250,-0.5);
+            Thread.sleep(1000);
         }
         else {
             robot.lift.liftLowerLevel();
+            Thread.sleep(1000);
+            robot.robotMotors.strafe(900,'l');
+            Thread.sleep(1000);
+            robot.robotMotors.moveForward(900,0.5);
+            Thread.sleep(1000);
+            robot.s.open();
+            Thread.sleep(1000);
+            robot.robotMotors.moveForward(150,-0.5);
+            Thread.sleep(1000);
         }
-        Thread.sleep(1000);
-        robot.robotMotors.strafe(900,'l');
-        Thread.sleep(1000);
-        robot.robotMotors.moveForward(900,0.5);
-        Thread.sleep(1000);
-        robot.s.open();
-        Thread.sleep(1000);
-        robot.robotMotors.moveForward(150,-0.5);
-        Thread.sleep(1000);
 //        robot.lift.backToBase();
 //        Thread.sleep(1000);
 
 //        robot.robotMotors.strafe(2000,'l'); //plan has different value for speed, value is default
 //        robot.carouselTurn.runOnce(); //need to make RunOnce method in carousel RedAuto Class
 //        robot.robotMotors.strafe(200,'r');
-        robot.robotMotors.turn(90,'r');
+        robot.robotMotors.turn(80,'r');
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(2000, 0.7);
+        robot.robotMotors.moveForward(2200, 0.7);
         robot.lift.backToBase();
         robot.lift.liftLowerLevel();
 
