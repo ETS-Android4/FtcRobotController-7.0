@@ -120,7 +120,7 @@ public class WarehouseRedAuto extends LinearOpMode{
         robot.robotMotors.strafe(900,'l');
         Thread.sleep(1000);
         robot.robotMotors.moveForward(1050,0.5);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         robot.s.open();
         Thread.sleep(1000);
         robot.robotMotors.moveForward(350,-0.5);
