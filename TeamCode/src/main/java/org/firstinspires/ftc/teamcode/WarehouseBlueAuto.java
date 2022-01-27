@@ -99,7 +99,7 @@ public class WarehouseBlueAuto extends LinearOpMode{
         if(failsafe) {
 
         }
-        else if(leftPos>=X_LEFT && leftPos<=X_LEFT+200)
+        else if(leftPos>=X_LEFT && leftPos<=X_LEFT+250)
         {
             result='l';
         }
@@ -159,7 +159,7 @@ public class WarehouseBlueAuto extends LinearOpMode{
 //        robot.robotMotors.strafe(2000,'l'); //plan has different value for speed, value is default
 //        robot.carouselTurn.runOnce(); //need to make RunOnce method in carousel RedAuto Class
 //        robot.robotMotors.strafe(200,'r');
-        robot.robotMotors.turn(80,'l');
+        robot.robotMotors.turn(77,'l');
         Thread.sleep(1000);
         robot.robotMotors.moveForward(2200, 0.7);
         robot.lift.backToBase();

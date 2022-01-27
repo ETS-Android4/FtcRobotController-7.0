@@ -323,7 +323,10 @@ public class GluonsTeleOp extends LinearOpMode {
             telemetry.addData("Gyro Heading", robot.imu.getHeadingDegrees());
             telemetry.addData("Lift Value",robot.lift.liftMotor.getCurrentPosition());
             telemetry.addData("Target Value",robot.lift.liftMotor.getTargetPosition());
-            telemetry.addData("Claw Position: ",robot.s.getPosition());
+            telemetry.addData("fl", robot.robotMotors.frontLeft.getCurrentPosition());
+            telemetry.addData("fr", robot.robotMotors.frontRight.getCurrentPosition());
+            telemetry.addData("bl", robot.robotMotors.backLeft.getCurrentPosition());
+            telemetry.addData("br", robot.robotMotors.backRight.getCurrentPosition());
 
 //            telemetry.addData("Alpha", h.color.alpha());
 //            telemetry.addData("Red  ", h.color.red());

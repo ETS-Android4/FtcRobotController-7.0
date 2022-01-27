@@ -40,10 +40,10 @@ import java.util.ArrayList;
  */
 
 public class RobotMotors {
-    private DcMotorEx frontRight;    // Hub 3 Slot 0    GAMER MOMENTS 2020
-    private DcMotorEx frontLeft;     // Hub 2 Slot 0     GAMER MOMENTS 2020
-    private DcMotorEx backRight;     // Hub 3 Slot 1    GAMER MOMENTS 2020
-    private DcMotorEx backLeft;      // Hub 2 Slot 1    GAMER MOMENTS 2020
+    public DcMotorEx frontRight;    // Hub 3 Slot 0    GAMER MOMENTS 2020
+    public DcMotorEx frontLeft;     // Hub 2 Slot 0     GAMER MOMENTS 2020
+    public DcMotorEx backRight;     // Hub 3 Slot 1    GAMER MOMENTS 2020
+    public DcMotorEx backLeft;      // Hub 2 Slot 1    GAMER MOMENTS 2020
     protected ArrayList<DcMotorEx> wheels = new ArrayList<>();
 
     private static final double TICKS_PER_REV = 751.8; //encoder resolution of 223 rpm motor
@@ -261,7 +261,7 @@ public class RobotMotors {
         int target=frontRight.getTargetPosition();
         if(frontRight.getCurrentPosition()>=target-3 && frontRight.getCurrentPosition()<=target+3)
         {
-            frontRight.setPower(0);
+//            frontRight.setPower(0);
             return true;
 
         }

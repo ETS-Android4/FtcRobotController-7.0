@@ -36,19 +36,19 @@ public class Lift {
         liftMotor.setPower(maxPower);
     }
     public void liftLowerLevel() {
-        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*0.7/7)); //value is subject to change
+        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*0.65/7)); //value is subject to change
         liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         liftMotor.setPower(maxPower);
 //        reached(liftMotor.getTargetPosition());
     }
     public void liftMidLevel() {
-        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*1.4/7)); //value is subject to change
+        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*1.31/7)); //value is subject to change
         liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         liftMotor.setPower(maxPower);
 //        reached(liftMotor.getTargetPosition());
     }
     public void liftUpperLevel() {
-        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*(1.95/7))); //value is subject to change
+        liftMotor.setTargetPosition((int)(TICKS_PER_REVOLUTION*(1.9/7))); //value is subject to change
         liftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         liftMotor.setPower(maxPower);
 //        reached(liftMotor.getTargetPosition());

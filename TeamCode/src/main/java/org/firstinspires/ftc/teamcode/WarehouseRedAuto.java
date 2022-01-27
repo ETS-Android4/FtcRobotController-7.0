@@ -98,7 +98,7 @@ public class WarehouseRedAuto extends LinearOpMode{
         if(failsafe) {
 
         }
-        else if(leftPos>=X_LEFT && leftPos<=X_LEFT+200)
+        else if(leftPos>=X_LEFT && leftPos<=X_LEFT+250)
         {
             result='l';
         }
