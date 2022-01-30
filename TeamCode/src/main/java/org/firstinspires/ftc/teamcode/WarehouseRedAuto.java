@@ -113,14 +113,18 @@ public class WarehouseRedAuto extends LinearOpMode{
         telemetry.addData("Level: ", result);
         telemetry.update();
 
+
+//        Thread.sleep(3000); //for bosons
+
+
         if (result == 't' || failsafe)
         {
         robot.lift.liftUpperLevel();
         Thread.sleep(1000);
         robot.robotMotors.strafe(900,'l');
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(1050,0.5);
-        Thread.sleep(2000);
+        robot.robotMotors.moveForward(1040,0.5);
+        Thread.sleep(4000);
         robot.s.open();
         Thread.sleep(1000);
         robot.robotMotors.moveForward(350,-0.5);
@@ -157,7 +161,10 @@ public class WarehouseRedAuto extends LinearOpMode{
 //        robot.robotMotors.strafe(2000,'l'); //plan has different value for speed, value is default
 //        robot.carouselTurn.runOnce(); //need to make RunOnce method in carousel RedAuto Class
 //        robot.robotMotors.strafe(200,'r');
-        robot.robotMotors.turn(80,'r');
+
+
+        //parking in warehouse
+        robot.robotMotors.turn(78,'r');
         Thread.sleep(1000);
         robot.robotMotors.moveForward(2200, 0.7);
         robot.lift.backToBase();

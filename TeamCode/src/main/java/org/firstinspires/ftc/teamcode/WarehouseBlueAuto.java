@@ -47,6 +47,8 @@ public class WarehouseBlueAuto extends LinearOpMode{
         boolean failsafe=false;
 
 
+
+
         // Finding the element
         int minDetections=1; //minimum number of "frames" the robot detects the element for to ensure it is detected properly
         int detections=0;
@@ -114,13 +116,15 @@ public class WarehouseBlueAuto extends LinearOpMode{
         telemetry.addData("Level: ", result);
         telemetry.update();
 
+
+
         if (result == 't' || failsafe)
         {
             robot.lift.liftUpperLevel();
             Thread.sleep(1000);
             robot.robotMotors.strafe(900,'r');
             Thread.sleep(1000);
-            robot.robotMotors.moveForward(1050,0.5);
+            robot.robotMotors.moveForward(1040,0.5);
             Thread.sleep(2000);
             robot.s.open();
             Thread.sleep(1000);
@@ -159,7 +163,9 @@ public class WarehouseBlueAuto extends LinearOpMode{
 //        robot.robotMotors.strafe(2000,'l'); //plan has different value for speed, value is default
 //        robot.carouselTurn.runOnce(); //need to make RunOnce method in carousel RedAuto Class
 //        robot.robotMotors.strafe(200,'r');
-        robot.robotMotors.turn(77,'l');
+
+        //parking in warehouse
+        robot.robotMotors.turn(74,'l');
         Thread.sleep(1000);
         robot.robotMotors.moveForward(2200, 0.7);
         robot.lift.backToBase();

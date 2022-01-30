@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-@Autonomous(name="CarouselRed Auto",group="Autonomous")
+@Autonomous(name="CarouselRedAuto",group="Autonomous")
 public class CarouselRedAuto extends LinearOpMode{
     private Robot robot=new Robot();
 
@@ -44,6 +44,14 @@ public class CarouselRedAuto extends LinearOpMode{
         float leftPos=0;
         float topPos=0;
         char result;
+//
+//        robot.robotMotors.strafe(200,'l');
+//        robot.robotMotors.moveForward(300,-0.8);
+//        robot.carouselTurn.runRedOnce();
+//        robot.robotMotors.moveForward(200,0.8);
+//        robot.robotMotors.turn(80,'l');
+
+//        robot.robotMotors.moveForward(1000,0.8);
 
 
         // Finding the element
