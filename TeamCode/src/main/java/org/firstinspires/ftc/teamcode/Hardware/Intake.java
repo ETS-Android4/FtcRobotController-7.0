@@ -14,15 +14,15 @@ public class Intake{
             inMotor=i;
         }
 
-//        public static double maxPower=1;
+        public static double maxPower=0.8;
 
     public void intake() {
-        inMotor.setPower(-.8);
+        inMotor.setPower(-maxPower);
     }
 
     public void noIntake() {
         inMotor.setPower(0);
     }
 
-    public void reverseIntake() { inMotor.setPower(1);}
+    public void reverseIntake() { inMotor.setPower(maxPower);}
 }

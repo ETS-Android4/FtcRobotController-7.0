@@ -190,7 +190,7 @@ public class RobotMotors {
         else if (dir == 'l') {
             setMotorPower(-1, 1, -1, 1);
         }
-        Thread.sleep((int)(550 * degree / 90));
+        Thread.sleep((int)(440 * degree / 90));
         setMotorPower(0);
     }
 
