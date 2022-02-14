@@ -41,6 +41,7 @@ import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 
 import org.firstinspires.ftc.teamcode.Hardware.Flywheel;
+import org.firstinspires.ftc.teamcode.Hardware.Lift;
 
 @TeleOp(name = "Gluons TeleOp", group = "TeleOp")
 
@@ -70,7 +71,8 @@ public class GluonsTeleOp extends LinearOpMode {
         boolean dropped = false;
         boolean clawPressed=false;
 
-        String liftState="MANUAL";
+//        String liftState="MANUAL";
+        LiftState ls=LiftState.MANUAL;
 
         robot.robotMotors.turnOffEncoders();
 
@@ -174,73 +176,72 @@ public class GluonsTeleOp extends LinearOpMode {
             //Lift Control
             if(gamepad2.a)
             {
-                liftState="TO_LOWER";
+                ls=LiftState.TO_LOWER;
             }
             if(gamepad2.x)
             {
-                liftState="TO_MID";
+                ls=LiftState.TO_MID;
             }
             if(gamepad2.y)
             {
-                liftState="TO_UPPER";
+                ls=LiftState.TO_UPPER;
             }
             if(gamepad2.b)
             {
-                liftState="TO_BASE";
+                ls=LiftState.TO_BASE;
             }
             if(gamepad2.right_trigger>0.8)
             {
-                liftState="TO_CAP";
+                ls=LiftState.TO_CAP;
             }
 
             if(gamepad2.dpad_up)
             {
-                liftState="MANUAL";
+                ls=LiftState.MANUAL;
                 robot.lift.moveUpWithoutEncoders();
             }
             else if(gamepad2.dpad_down)
             {
-                liftState="MANUAL";
+                ls=LiftState.MANUAL;
                 robot.lift.moveDownWithoutEncoders();
             }
             else if (gamepad1.b)
             {
-                liftState="MANUAL";
+                ls=LiftState.MANUAL;
                 robot.lift.liftMotor.setPower(0);
             }
-            else if(liftState.equals("MANUAL")) {
+            else if(ls==LiftState.MANUAL) {
                 robot.lift.liftMotor.setPower(0);
             }
 
             if(gamepad2.dpad_right) {
                 robot.lift.reset();
             }
-            telemetry.addData("liftState: ", liftState);
-            //states: TO_LOWER, TO_MID, TO_UPPER, TO_BASE, MANUAL
-            if (liftState.equals("TO_LOWER"))
+            telemetry.addData("liftState: ", ls);
+            if (ls==LiftState.TO_LOWER)
             {
                 robot.lift.liftLowerLevel();
             }
-            else if(liftState.equals("TO_CAP"))
+            else if(ls==LiftState.TO_CAP)
             {
                 robot.lift.capLevel();
             }
-            else if (liftState.equals("TO_MID"))
+            else if (ls==LiftState.TO_MID)
             {
                 robot.lift.liftMidLevel();
             }
-            else if (liftState.equals("TO_UPPER"))
+            else if (ls==LiftState.TO_UPPER)
             {
                 robot.lift.liftUpperLevel();
             }
-            else if (liftState.equals("TO_BASE"))
+            else if (ls==LiftState.TO_BASE)
             {
                 robot.lift.backToBase();
             }
 
             if (robot.lift.stopWhenReached())
             {
-                liftState="MANUAL";
+                ls=LiftState.MANUAL;
             }
 
 
@@ -354,6 +355,11 @@ public class GluonsTeleOp extends LinearOpMode {
             // 25 ticks/sec
         }
 
+    }
+
+    public enum LiftState
+    {
+        TO_LOWER, TO_CAP, TO_MID, TO_UPPER, TO_BASE, MANUAL
     }
 }
 
