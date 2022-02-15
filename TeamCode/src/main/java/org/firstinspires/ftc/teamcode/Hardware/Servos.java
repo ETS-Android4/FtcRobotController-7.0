@@ -9,8 +9,9 @@ public class Servos {
     private Servo drop;
     private Servo boxDrop;
 
-    private final double DROP_OPEN = 0.73; //numbers subject to change
+    private final double DROP_OPEN = 0.76; //numbers subject to change
     private final double DROP_CLOSE = 0.6; //numbers subject to change
+    private final double DROP_OPEN_LIFTED=1.0;
 
     private final double BOX_ZERO = 0.73;
     private final double BOX_L_CLOSED = 0.6;
@@ -30,6 +31,8 @@ public class Servos {
     }
 
     public void open() {drop.setPosition(DROP_OPEN); }
+
+    public void openLifted() {drop.setPosition(DROP_OPEN_LIFTED); }
 //
     public void close() {drop.setPosition(DROP_CLOSE);}
 

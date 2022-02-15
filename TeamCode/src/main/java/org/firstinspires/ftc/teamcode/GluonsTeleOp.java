@@ -155,7 +155,14 @@ public class GluonsTeleOp extends LinearOpMode {
                 {
                     clawPressed=true;
                     if (!dropped) {
-                        robot.s.open();
+                        if(robot.lift.liftMotor.getCurrentPosition()<5000)
+                        {
+                            robot.s.open();
+                        }
+                        else
+                        {
+                            robot.s.openLifted();
+                        }
                         dropped = true;
                     } else {
                         robot.s.close();
@@ -195,6 +202,7 @@ public class GluonsTeleOp extends LinearOpMode {
                 ls=LiftState.TO_CAP;
             }
 
+            //Manual overrides
             if(gamepad2.dpad_up)
             {
                 ls=LiftState.MANUAL;
