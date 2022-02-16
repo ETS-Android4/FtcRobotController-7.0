@@ -49,6 +49,7 @@ public class CarouselBlueAuto extends LinearOpMode{
         Thread.sleep(1000);
         robot.robotMotors.moveForward(525, 0.8);
         Thread.sleep(1000);
+        robot.robotMotors.strafe(300, 'r');
         robot.lift.backToBase();
         Thread.sleep(1000);
 
