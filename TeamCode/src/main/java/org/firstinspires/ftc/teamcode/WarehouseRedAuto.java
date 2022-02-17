@@ -148,11 +148,11 @@ public class WarehouseRedAuto extends LinearOpMode{
             Thread.sleep(1000);
             robot.robotMotors.strafe(900,'l');
             Thread.sleep(1000);
-            robot.robotMotors.moveForward(800,0.5);
+            robot.robotMotors.moveForward(950,0.5);
             Thread.sleep(1000);
             robot.s.open();
             Thread.sleep(1000);
-            robot.robotMotors.moveForward(100,-0.5);
+            robot.robotMotors.moveForward(350,-0.5);
             Thread.sleep(1000);
         }
 //        robot.lift.backToBase();
@@ -164,7 +164,7 @@ public class WarehouseRedAuto extends LinearOpMode{
 
 
         //parking in warehouse
-        robot.robotMotors.turn(90,'r'); //76 r before
+        robot.robotMotors.turn(93,'r'); //76 r before
         Thread.sleep(1000);
         robot.robotMotors.moveForward(2200, 0.7);
         Thread.sleep(1000);

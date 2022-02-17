@@ -167,7 +167,7 @@ public class WarehouseBlueAuto extends LinearOpMode{
         //parking in warehouse
         robot.robotMotors.turn(90,'l'); //74 l
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(2200, 0.7);
+        robot.robotMotors.moveForward(2100, 0.7);
         Thread.sleep(1000);
         robot.lift.liftLowerLevel();
 
