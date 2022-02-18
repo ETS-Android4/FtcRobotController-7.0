@@ -123,11 +123,11 @@ public class WarehouseRedAuto extends LinearOpMode{
         Thread.sleep(1000);
         robot.robotMotors.strafe(900,'l');
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(910,0.5);
+        robot.robotMotors.moveForward(860,0.5);
         Thread.sleep(2000);
         robot.s.open();
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(300,-0.5);
+        robot.robotMotors.moveForward(740,-0.5);
             Thread.sleep(1000);
         }
         else if (result == 'm')
@@ -136,11 +136,11 @@ public class WarehouseRedAuto extends LinearOpMode{
             Thread.sleep(1000);
             robot.robotMotors.strafe(900,'l');
             Thread.sleep(1000);
-            robot.robotMotors.moveForward(860,0.5);
+            robot.robotMotors.moveForward(820,0.5);
             Thread.sleep(1000);
             robot.s.open();
             Thread.sleep(1000);
-            robot.robotMotors.moveForward(170,-0.5);
+            robot.robotMotors.moveForward(640,-0.5);
             Thread.sleep(1000);
         }
         else {
@@ -148,11 +148,11 @@ public class WarehouseRedAuto extends LinearOpMode{
             Thread.sleep(1000);
             robot.robotMotors.strafe(900,'l');
             Thread.sleep(1000);
-            robot.robotMotors.moveForward(950,0.5);
+            robot.robotMotors.moveForward(925,0.5);
             Thread.sleep(1000);
             robot.s.open();
             Thread.sleep(1000);
-            robot.robotMotors.moveForward(350,-0.5);
+            robot.robotMotors.moveForward(765,-0.5);
             Thread.sleep(1000);
         }
 //        robot.lift.backToBase();
