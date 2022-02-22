@@ -116,7 +116,7 @@ public class WarehouseBlueAuto extends LinearOpMode{
         telemetry.addData("Level: ", result);
         telemetry.update();
 
-
+//Thread.sleep(15000);
 
         if (result == 't' || failsafe)
         {
@@ -128,7 +128,7 @@ public class WarehouseBlueAuto extends LinearOpMode{
             Thread.sleep(2000);
             robot.s.open();
             Thread.sleep(1000);
-            robot.robotMotors.moveForward(460,-0.5);
+            robot.robotMotors.moveForward(410,-0.5);
             Thread.sleep(1000);
         }
         else if (result == 'm')
@@ -141,7 +141,7 @@ public class WarehouseBlueAuto extends LinearOpMode{
             Thread.sleep(1000);
             robot.s.open();
             Thread.sleep(1000);
-            robot.robotMotors.moveForward(430,-0.5);
+            robot.robotMotors.moveForward(380,-0.5);
             Thread.sleep(1000);
         }
         else {
@@ -153,7 +153,7 @@ public class WarehouseBlueAuto extends LinearOpMode{
             Thread.sleep(1000);
             robot.s.open();
             Thread.sleep(1000);
-            robot.robotMotors.moveForward(350,-0.5);
+            robot.robotMotors.moveForward(300,-0.5);
             Thread.sleep(1000);
         }
 
@@ -167,9 +167,9 @@ public class WarehouseBlueAuto extends LinearOpMode{
         //parking in warehouse
         robot.robotMotors.turn(90,'l'); //74 l
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(2100, 0.7);
+        robot.robotMotors.moveForward(1950, 0.7);
         Thread.sleep(1000);
-        robot.lift.liftLowerLevel();
+        robot.lift.liftMidLevel();
 
         executor.schedule(new Runnable() {
             @Override

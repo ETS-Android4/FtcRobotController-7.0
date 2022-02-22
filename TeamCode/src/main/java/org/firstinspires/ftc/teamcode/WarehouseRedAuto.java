@@ -164,11 +164,11 @@ public class WarehouseRedAuto extends LinearOpMode{
 
 
         //parking in warehouse
-        robot.robotMotors.turn(93,'r'); //76 r before
+        robot.robotMotors.turn(95,'r'); //76 r before
         Thread.sleep(1000);
-        robot.robotMotors.moveForward(2200, 0.7);
+        robot.robotMotors.moveForward(1500, 0.7);
         Thread.sleep(1000);
-        robot.lift.liftLowerLevel();
+        robot.lift.liftMidLevel();
         Thread.sleep(1000);
 
 
